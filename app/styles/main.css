@@ -1,0 +1,21 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.hero-unit {
+    margin: 10px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    line-height: 20px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
