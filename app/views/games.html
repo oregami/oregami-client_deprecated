@@ -1,6 +1,18 @@
 <p>This is the games view.</p>
 
-mySettings.apiUri: {{ mySettings.apiUri }}
-<br/>
-
 <button ng-click="test()">gamesService.test()</button>
+        <br/>
+<button ng-click="getGames()">gamesService.getGames()</button>
+<hr/>
+
+
+<div ng-show="games"><h2>Games</h2>
+<div ng-repeat="game in games">
+    <h3>{{ game.tagLineDescription }}</h3>
+
+    <div ng-repeat="rg in game.releaseGroupList">{{ rg.releaseGroupType }}: {{ rg.name }}</div>
+
+</div>
+</div>
+
+

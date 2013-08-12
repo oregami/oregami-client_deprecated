@@ -20,7 +20,7 @@ var app = angular.module('oregamiClientApp', [])
       });
   })
   .constant('mySettings', {
-        apiUri: '/api/foo',
+        apiUri: 'http://localhost:8080/service',
         version: '0.0.1'
     });
 ;

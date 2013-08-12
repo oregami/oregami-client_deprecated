@@ -13,5 +13,14 @@ angular.module('oregamiClientApp')
          console.log('GamesCtrl.test() called');
          $gamesService.test();
     };
+    $scope.getGames = function() {
+        console.log('GamesCtrl.games() called');
+        $gamesService.getGames().then(function(d) {
+            $scope.games = d;
+        });
+    };
+
+
+
 
   }]);
