@@ -8,9 +8,10 @@
 
 <div ng-show="games"><h2>Games</h2>
 <div ng-repeat="game in games">
-    <h3>{{ game.tagLineDescription }}</h3>
+    <h3 ng-show="game.tagLineDescription">tld: {{ game.tagLineDescription }} </h3>
+    <h3 ng-show="game.gameTitleList[0].title">title: {{ game.gameTitleList[0].title }}</h3>
 
-    <div ng-repeat="rg in game.releaseGroupList">{{ rg.releaseGroupType }}: {{ rg.name }}</div>
+    <div ng-repeat="rg in game.releaseGroupList">{{ rg.releaseGroupType }}: {{ rg.system }}</div>
 
 </div>
 </div>
