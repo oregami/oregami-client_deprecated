@@ -1,19 +1,27 @@
-<p>This is the games view.</p>
+<p>This is the games view.</p>      <button ng-click="getGames()">REFRESH</button>
 
-<button ng-click="test()">gamesService.test()</button>
-        <br/>
-<button ng-click="getGames()">gamesService.getGames()</button>
 <hr/>
 
 
 <div ng-show="games"><h2>Games</h2>
 <div ng-repeat="game in games">
-    <h3 ng-show="game.tagLineDescription">tld: {{ game.tagLineDescription }} </h3>
+    <h3 ng-show="game.tagLineDescription">tld: {{ game.tagLineDescription }}</h3>
     <h3 ng-show="game.gameTitleList[0].title">title: {{ game.gameTitleList[0].title }}</h3>
-
+    <div>id={{ game.id }} version={{ game.version }}</div>
     <div ng-repeat="rg in game.releaseGroupList">{{ rg.releaseGroupType }}: {{ rg.system }}</div>
 
 </div>
 </div>
 
+<!--
+<form novalidate class="simple-form">
+    id: <input type="text" ng-model="game.id">
+    <br/>
+    version: <input type="text" ng-model="game.version">
+    <br/>
+    tld: <input type="text" ng-model="game.tagLineDescription">
+    <br/>
+    <button ng-click="updateGame(game)">SAVE</button>
+</form>
+-->
 
