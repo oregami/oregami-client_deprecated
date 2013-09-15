@@ -9,7 +9,7 @@ angular.module('oregamiClientApp')
             },
             getGames: function() {
                 // $http returns a promise, which has a then function, which also returns a promise
-                var url = $mySettings.apiUri + '/games/list';
+                var url = $mySettings.apiUri + '/games';
                 console.log('gamesService.test() called => ' + url);
                 var promise = $http.get(url).then(function (response) {
                     // The then function here is an opportunity to modify the response
