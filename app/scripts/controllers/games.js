@@ -20,6 +20,19 @@ angular.module('oregamiClientApp')
         });
     };
 
+    //load games:
+    $scope.getGames();
+
+    $scope.game=null;
+
+        /*
+        $scope.updateGame = function(game) {
+            $scope.game= angular.copy(game);
+            console.log($scope.game);
+            $gamesService.updateGame(game);
+        };
+        */
+
 
 
 
