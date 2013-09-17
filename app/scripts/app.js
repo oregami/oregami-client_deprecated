@@ -3,7 +3,7 @@
 var app = angular.module('oregamiClientApp', [])
 
     .constant('mySettings', {
-        apiUri: 'http://localhost:8080',
+        apiUri: 'http://localhost:9003',
         version: '0.0.1'
     })
 
