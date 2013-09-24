@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('oregamiClientApp', [])
+var app = angular.module('oregamiClientApp', ['pascalprecht.translate'])
 
     .constant('mySettings', {
         //apiUri: 'http://localhost:8080',
@@ -44,6 +44,19 @@ var app = angular.module('oregamiClientApp', [])
   })
 
 ;
+
+
+app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($translateProvider, $translatePartialLoaderProvider) {
+
+    $translatePartialLoaderProvider.addPart('navigation');
+    $translatePartialLoaderProvider.addPart('games');
+
+    $translateProvider.useLoader('$translatePartialLoader', {
+        urlTemplate: '/language/{part}_{lang}.json'
+    });
+
+    $translateProvider.preferredLanguage('de');
+}]);
 
 
 function getCookie(name) {
