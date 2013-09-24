@@ -1,0 +1,18 @@
+<div ng-controller="NavigationCtrl" id="navContainer">
+
+
+    <span id="navDetails">
+        Server-URL:
+        <span ng-show="!customUrl">{{ defaultUrl }}</span>
+        <span ng-show="customUrl">{{ customUrl }}</span>
+        <a href="#config">change</a>
+    </span>
+
+    <ul class="nav">
+        <li ng-repeat="nav in navlist">
+            <a ng-class="{active:isActive('/' + nav.url )}" href="#{{ nav.url }}" title="{{ nav.title }}">{{ nav.name }}</a>
+            <!--<span ng-show="('/'+{{nav.url}}) == {{$location.path()">{{ nav.name }} (current)</span>-->
+        </li>
+    </ul>
+
+</div>
