@@ -8,4 +8,8 @@ angular.module('oregamiClientApp')
       'Karma'
     ];
     $scope.mySettings = $mySettings;
+
+    $scope.defaultUrl = $mySettings.apiUri;
+    $scope.customUrl = getCookie("customUrl");
+
   }]);
