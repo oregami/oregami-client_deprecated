@@ -1,16 +1,27 @@
 <div ng-controller="NavigationCtrl" id="navContainer">
 
-
     <span id="navDetails">
+
+        <span ng-controller="LanguageCtrl">
+            <div style="float:left;margin-right:1cm;">
+            <a href="" ng-class="{active:preferredLanguage != 'de'}" ng-click="changeLang('en')"><img src="/images/en.png"></a>
+                <br/>
+            <a href="" ng-class="{active:preferredLanguage != 'en'}" ng-click="changeLang('de')"><img src="/images/de.png"></a>
+            </div>
+        </span>
+
         Server-URL:
         <span ng-show="!customUrl">{{ defaultUrl }}</span>
         <span ng-show="customUrl">{{ customUrl }}</span>
-        <a href="#config">change</a>
+        <a href="#config">{{  'change'|translate}}</a>
+
     </span>
+
+
 
     <ul class="nav">
         <li ng-repeat="nav in navlist">
-            <a ng-class="{active:isActive('/' + nav.url )}" href="#{{ nav.url }}" title="{{ nav.title }}">{{ nav.name }}</a>
+            <a ng-class="{active:isActive('/' + nav.url )}" href="#{{ nav.url }}" title="{{ nav.title }}">{{ nav.name | translate}}</a>
             <!--<span ng-show="('/'+{{nav.url}}) == {{$location.path()">{{ nav.name }} (current)</span>-->
         </li>
     </ul>
