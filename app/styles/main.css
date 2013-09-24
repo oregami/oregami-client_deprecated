@@ -51,10 +51,18 @@ ul.nav li {
 }
 
 .active {
-    color: red;
+    color: green;
     text-decoration: none;
+}
+
+.activeLanguage {
+    border: 2px solid red;
 }
 
 #gameListContainer {
     text-align: left;
+}
+
+.flag {
+    padding: 2px;
 }
