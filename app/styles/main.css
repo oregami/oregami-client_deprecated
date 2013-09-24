@@ -2,6 +2,7 @@ body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+
 }
 
 .hero-unit {
@@ -18,4 +19,42 @@ body {
     font-size: 40px;
     line-height: 1;
     letter-spacing: -1px;
+}
+
+#siteContainer {
+    text-align: center;
+    width: 900px;
+    background-color: #eeeeff;
+    min-height: 700px;
+}
+
+#navContainer {
+    text-align: center;
+}
+
+#navDetails {
+    display:inline;
+    float: right;
+    top: 0px;
+    right: 0px;
+    font-size: 60%;
+    text-align: left;
+}
+ul.nav {
+    margin: 0; padding: 2pt;
+}
+ul.nav li {
+    list-style: none;
+    margin: 2px; padding: 2pt;
+    display:inline;
+    border: 1px solid #ddddff;
+}
+
+.active {
+    color: red;
+    text-decoration: none;
+}
+
+#gameListContainer {
+    text-align: left;
 }
