@@ -1,7 +1,11 @@
-<p>This is the games view.</p>      <button ng-click="getGames()">REFRESH</button>
+<p>
+    This is the games view.
+    <button ng-click="getGames()">REFRESH</button>
+</p>
 
 <hr/>
 
+<div id="gameListContainer">
 
 <div ng-show="games"><h2>Games</h2>
 <div ng-repeat="game in games">
@@ -25,3 +29,5 @@
 </form>
 -->
 
+
+</div>
