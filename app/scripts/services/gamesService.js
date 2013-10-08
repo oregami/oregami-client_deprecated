@@ -10,7 +10,7 @@ angular.module('oregamiClientApp')
             getGames: function() {
                 // $http returns a promise, which has a then function, which also returns a promise
                 var url = $mySettings.apiUri + '/games';
-                if (getCookie("customUrl")!=null) {
+                if (getCookie("customUrl")!=null && getCookie("customUrl").length>1 ) {
                     url = getCookie("customUrl") + '/games'
                 }
                 console.log('gamesService.test() called => ' + url);
