@@ -4,7 +4,7 @@ var app = angular.module('oregamiClientApp', ['pascalprecht.translate'])
 
     .constant('mySettings', {
         //apiUri: 'http://localhost:8080',
-        apiUri: 'http://test.server.oregami.org:6080',
+        apiUri: 'http://test.server.oregami.org',
         version: '0.0.1'
     })
 
