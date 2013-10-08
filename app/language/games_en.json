@@ -1,4 +1,6 @@
 {
-    "games_view_title" : "This is the games view."
+    "games_view_title" : "This is the games view.",
+    "refresh": "Refresh",
+    "games": "Games"
 
 }

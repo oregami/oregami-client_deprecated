@@ -1,4 +1,6 @@
 {
-    "games_view_title" : "Dies ist die Games-Seite."
+    "games_view_title" : "Dies ist die Games-Seite."   ,
+    "refresh": "Neu laden",
+    "games": "Spiele"
 
 }
