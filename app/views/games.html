@@ -9,7 +9,6 @@
 
 <div ng-show="games"><h2 translate>games</h2>
 <div ng-repeat="game in games" class="gameContainer">
-    <h3 ng-show="game.tagLineDescription">tld: {{ game.tagLineDescription }}</h3>
     <h3 ng-show="game.gameTitleList[0].title">title: {{ game.gameTitleList[0].title }}</h3>
     <div>id={{ game.id }} version={{ game.version }}</div>
     <div ng-repeat="rg in game.releaseGroupList">{{ rg.releaseGroupType }}: {{ rg.system }}</div>
