@@ -10,8 +10,21 @@
 <div ng-show="games"><h2 translate>games</h2>
 <div ng-repeat="game in games" class="gameContainer">
     <h3 ng-show="game.gameTitleList[0].title">title: {{ game.gameTitleList[0].title }}</h3>
-    <div>id={{ game.id }} version={{ game.version }}</div>
-    <div ng-repeat="rg in game.releaseGroupList">{{ rg.releaseGroupType }}: {{ rg.system }}</div>
+    <div>
+        type={{ game.gameEntryType.value }}
+        id={{ game.id }}
+        version={{ game.version }}
+    </div>
+
+    <div ng-repeat="rg in game.releaseGroupList">
+        name={{ rg.name }}, system={{ rg.system }}
+        <div ng-show="!demoContentTypeList.length"> demo content types =
+            <span ng-repeat="dct in rg.demoContentTypeList">
+               {{ dct.value }}<span ng-show="$index<(rg.demoContentTypeList.length-1)">, </span>
+            </span>
+        </div>
+
+    </div>
 
 </div>
 </div>
