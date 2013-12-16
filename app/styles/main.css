@@ -66,3 +66,17 @@ ul.nav li {
 .flag {
     padding: 2px;
 }
+
+.gameContainer {
+    border: 1px dotted grey;
+}
+
+h2 {
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+h3 {
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
