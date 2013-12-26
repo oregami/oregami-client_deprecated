@@ -1,8 +1,13 @@
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    font-family: 'Source Sans Pro', sans-serif;
     color: #333;
+    font-size: 13px;
 
+}
+
+a {
+    color:#000000;
 }
 
 .hero-unit {
@@ -24,12 +29,13 @@ body {
 #siteContainer {
     text-align: center;
     width: 900px;
-    background-color: #eeeeff;
+    background-color: #eeeeee;
     min-height: 700px;
 }
 
 #navContainer {
     text-align: center;
+    background-color: #dddddd;
 }
 
 #navDetails {
@@ -37,7 +43,7 @@ body {
     float: right;
     top: 0px;
     right: 0px;
-    font-size: 60%;
+    font-size: 80%;
     text-align: left;
 }
 ul.nav {
