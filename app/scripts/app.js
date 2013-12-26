@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('oregamiClientApp', ['pascalprecht.translate'])
+var app = angular.module('oregamiClientApp', ['pascalprecht.translate', 'ngRoute'])
 
     .constant('mySettings', {
         //apiUri: 'http://localhost:8080',
