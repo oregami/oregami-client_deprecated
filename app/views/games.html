@@ -11,6 +11,7 @@
 
 <div ng-show="games"><h2 translate>games</h2>
 <div ng-repeat="game in games" class="gameContainer">
+    <!--
     <h3 ng-show="game.gameTitleList[0].title">titles:
         <span ng-repeat="gameTitle in game.gameTitleList">
         {{ gameTitle.title }}
@@ -18,12 +19,38 @@
         </span>
 
     </h3>
+    -->
+
+    <div ng-show="game.gameToGameTitleConnectionList.length>0">
+        <span
+                ng-repeat="gameToGameTitleConnection in game.gameToGameTitleConnectionList | filter: {titleType.value:'MAIN_TITLE'}"
+                style="font-weight: bold;"
+                title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
+                >
+            {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}{{$last ? '' : ', '}}
+        </span>
+    </div>
+
+    <span ng-show="game.gameToGameTitleConnectionList.length>0">&nbsp;<span translate>OTHER_TITLES</span>:
+    <span ng-repeat="gameToGameTitleConnection in filteredList = (game.gameToGameTitleConnectionList | filter: {titleType.value: '!'+'MAIN_TITLE'})">
+        <span
+              title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
+         >
+            {{ gameToGameTitleConnection.gameTitle.nativeSpelling }} / {{ gameToGameTitleConnection.titleType.value}}{{$last ? '' : ', '}}
+
+        </span>
+    </span>
+    </span>
+
     <div>
-        type={{ game.gameEntryType.value }}
+        type={{ 'GameEntryType.' + game.gameEntryType.value | translate}}
         id={{ game.id }}
         version={{ game.version }}
     </div>
 
+    <span ng-show="game.releaseGroupList.length>0">
+    <hr style="width:200px;text-align: left; float: left;"/><br/>
+    Releases:
     <div ng-repeat="rg in game.releaseGroupList">
         name={{ rg.name }}, system={{ rg.system }}
         <div ng-show="!demoContentTypeList.length"> demo content types =
@@ -31,9 +58,10 @@
                {{ dct.value }}<span ng-show="$index<(rg.demoContentTypeList.length-1)">, </span>
             </span>
         </div>
-
     </div>
+    </span>
 
+     <hr/>
 </div>
 </div>
 
