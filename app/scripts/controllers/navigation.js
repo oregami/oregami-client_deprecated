@@ -12,7 +12,8 @@ angular.module('oregamiClientApp')
         {name: "games", url: "games", title: "list all games"},
         {name: "persons", url: "persons", title: 'all persons'},
         {name: "companies", url: "companies", title: 'view all companies'},
-        {name: "magazines", url: "magazines", title: 'mags'}
+        {name: "magazines", url: "magazines", title: 'mags'},
+        {name: "regions", url: "regions", title: 'regions'},
     ];
 
     $scope.defaultUrl = $mySettings.apiUri;

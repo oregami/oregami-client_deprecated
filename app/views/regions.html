@@ -1,0 +1,6 @@
+<p>This is the regions view.</p>
+
+<div ng-repeat="region in regions">{{ region.name }}
+    <span ng-show="region.country">(<span translate>COUNTRY</span>)</span>
+    <span ng-show="!region.country">(<span translate>REGION</span>)</span>
+</div>

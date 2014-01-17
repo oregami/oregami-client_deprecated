@@ -3,8 +3,8 @@
 var app = angular.module('oregamiClientApp', ['pascalprecht.translate', 'ngRoute'])
 
     .constant('mySettings', {
-        //apiUri: 'http://localhost:8080',
-        apiUri: 'http://test.server.oregami.org',
+        apiUri: 'http://localhost:8080',
+        //apiUri: 'http://test.server.oregami.org',
         version: '0.0.1'
     })
 
@@ -38,6 +38,14 @@ var app = angular.module('oregamiClientApp', ['pascalprecht.translate', 'ngRoute
         templateUrl: 'views/config.html',
         controller: 'ConfigCtrl'
       })
+      .when('/languages', {
+        templateUrl: 'views/languages.html',
+        controller: 'LanguagesCtrl'
+      })
+      .when('/regions', {
+        templateUrl: 'views/regions.html',
+        controller: 'RegionsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -50,6 +58,7 @@ app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($
 
     $translatePartialLoaderProvider.addPart('navigation');
     $translatePartialLoaderProvider.addPart('games');
+    $translatePartialLoaderProvider.addPart('regions');
 
     $translateProvider.useLoader('$translatePartialLoader', {
         urlTemplate: '/language/{part}_{lang}.json'
