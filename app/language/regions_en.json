@@ -1,4 +1,13 @@
 {
     "COUNTRY" : "Country",
-    "REGION" : "Region"
+    "REGION" : "Region",
+
+    "GERMANY" : "Germany",
+    "UNITED_STATES" : "USA",
+    "UNITED_KINGDOM" : "England",
+    "FRANCE" : "France",
+    "JAPAN" : "Japan",
+    "CHINA" : "China",
+    "EUROPE" : "Europe",
+    "NORTH_AMERICA" : "North America"
 }
