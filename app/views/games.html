@@ -23,7 +23,7 @@
 
     <div ng-show="game.gameToGameTitleConnectionList.length>0">
         <span
-                ng-repeat="gameToGameTitleConnection in game.gameToGameTitleConnectionList | filter: {titleType.value:'MAIN_TITLE'}"
+                ng-repeat="gameToGameTitleConnection in game.gameToGameTitleConnectionList | filter: {titleType.value:'ORIGINAL_TITLE'}"
                 style="font-weight: bold;"
                 title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
                 >
@@ -32,7 +32,7 @@
     </div>
 
     <span ng-show="game.gameToGameTitleConnectionList.length>0">&nbsp;<span translate>OTHER_TITLES</span>:
-    <span ng-repeat="gameToGameTitleConnection in filteredList = (game.gameToGameTitleConnectionList | filter: {titleType.value: '!'+'MAIN_TITLE'})">
+    <span ng-repeat="gameToGameTitleConnection in filteredList = (game.gameToGameTitleConnectionList | filter: {titleType.value: '!'+'ORIGINAL_TITLE'})">
         <span
               title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
          >
