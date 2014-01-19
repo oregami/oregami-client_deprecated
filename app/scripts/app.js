@@ -64,7 +64,7 @@ app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($
         urlTemplate: '/language/{part}_{lang}.json'
     });
 
-    $translateProvider.preferredLanguage('de');
+    $translateProvider.preferredLanguage('en');
 }]);
 
 
