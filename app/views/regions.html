@@ -1,7 +1,13 @@
-<p>This is the regions view.</p>
 
 
-<div ng-repeat="region in regions">{{ region.name | translate }}
-    <span ng-show="region.country">(<span translate>COUNTRY</span>)</span>
-    <span ng-show="!region.country">(<span translate>REGION</span>)</span>
+<h3><span translate>REGIONS</span>:</h3>
+<div ng-repeat="region in regions | filter: { country: false}">{{ region.name | translate }}
+    (<span translate>REGION</span>)
+</div>
+
+<br/>
+
+<h3><span translate>COUNTRIES</span>:</h3>
+<div ng-repeat="region in regions | filter: { country: true}">{{ region.name | translate }}
+    (<span translate>COUNTRY</span>)
 </div>
