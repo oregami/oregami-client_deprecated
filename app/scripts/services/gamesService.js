@@ -1,30 +1,18 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .service('gamesService', [ 'mySettings' , '$http',  function gamesService($mySettings, $http) {
+  .service('gamesService', [ '$http', 'Restangular',
+   function gamesService($http, Restangular) {
 
         return {
             test: function(callback) {
                 console.log('gamesService.test() called');
             },
             getGames: function() {
-                // $http returns a promise, which has a then function, which also returns a promise
-                var url = $mySettings.apiUri + '/games';
-                if (getCookie("customUrl")!=null && getCookie("customUrl").length>1 ) {
-                    url = getCookie("customUrl") + '/games'
-                }
-                console.log('gamesService.test() called => ' + url);
-                var promise = $http.get(url).then(function (response) {
-                    // The then function here is an opportunity to modify the response
-                    console.log(url + '->' + response);
-                    // The return value gets picked up by the then in the controller.
-                    return response.data;
-                });
-                // Return the promise to the controller
-                return promise;
-            } ,
+                return Restangular.all("games").getList();
+            }
 /*
-            updateGame: function(game) {
+            ,updateGame: function(game) {
                 var url = $mySettings.apiUri + '/games';
                 if (game.id==null) {
                     $http({
