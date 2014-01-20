@@ -1,14 +1,21 @@
 'use strict';
 
-var app = angular.module('oregamiClientApp', ['pascalprecht.translate', 'ngRoute'])
+var app = angular.module('oregamiClientApp',
+            [
+            'pascalprecht.translate',
+            'ngRoute',
+            'restangular',
+            'chieffancypants.loadingBar',
+            'ngAnimate'
+            ]
+    )
 
-    .constant('mySettings', {
-        //apiUri: 'http://localhost:8080',
-        apiUri: 'http://test.server.oregami.org',
-        version: '0.0.1'
-    })
 
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, RestangularProvider, cfpLoadingBarProvider) {
+
+    RestangularProvider.setBaseUrl('http://localhost:8080');
+    cfpLoadingBarProvider.includeSpinner = false;
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -49,6 +56,8 @@ var app = angular.module('oregamiClientApp', ['pascalprecht.translate', 'ngRoute
       .otherwise({
         redirectTo: '/'
       });
+
+
   })
 
 ;
