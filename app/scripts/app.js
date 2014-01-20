@@ -13,7 +13,8 @@ var app = angular.module('oregamiClientApp',
 
   .config(function ($routeProvider, RestangularProvider, cfpLoadingBarProvider) {
 
-    RestangularProvider.setBaseUrl('http://localhost:8080');
+    //RestangularProvider.setBaseUrl('http://localhost:8080');
+    RestangularProvider.setBaseUrl('http://test.server.oregami.org');
     cfpLoadingBarProvider.includeSpinner = false;
 
     $routeProvider
