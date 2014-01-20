@@ -1,15 +1,10 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('MainCtrl', [ '$scope', 'mySettings', function ($scope, $mySettings) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    $scope.mySettings = $mySettings;
+  .controller('MainCtrl', [ '$scope', 'mySettings', function ($scope, $mySettings, $translatePartialLoader) {
 
-    $scope.defaultUrl = $mySettings.apiUri;
-    $scope.customUrl = getCookie("customUrl");
+        $translatePartialLoader.addPart('main');
+        $scope.mySettings = $mySettings;
+
 
   }]);
