@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('GamesCtrl', ['$scope', 'mySettings', 'gamesService', '$translate', '$translatePartialLoader',
-                   function ($scope,  $mySettings,  $gamesService,   $translate,   $translatePartialLoader) {
-
-    $scope.mySettings = $mySettings;
+  .controller('GamesCtrl', ['$scope', 'gamesService', '$translate', '$translatePartialLoader',
+                   function ($scope,  $gamesService,   $translate,   $translatePartialLoader) {
 
     $translatePartialLoader.addPart('games');
 

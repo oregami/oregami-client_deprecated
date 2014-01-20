@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('MainCtrl', [ '$scope', 'mySettings', function ($scope, $mySettings, $translatePartialLoader) {
+  .controller('MainCtrl', [ '$scope', '$translatePartialLoader', function ($scope, $translatePartialLoader) {
 
         $translatePartialLoader.addPart('main');
-        $scope.mySettings = $mySettings;
 
 
   }]);

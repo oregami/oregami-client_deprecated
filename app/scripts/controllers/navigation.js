@@ -2,8 +2,8 @@
 
 angular.module('oregamiClientApp')
   .controller('NavigationCtrl',
-            ['$scope', 'mySettings', '$location', '$route', '$translate', '$translatePartialLoader',
-    function ($scope,  $mySettings,   $location,   $route, $translate,     $translatePartialLoader) {
+            ['$scope', '$location', '$route', '$translate', '$translatePartialLoader',
+    function ($scope,   $location,   $route, $translate,     $translatePartialLoader) {
 
     $translatePartialLoader.addPart('navigation');
 
@@ -15,9 +15,6 @@ angular.module('oregamiClientApp')
         {name: "magazines", url: "magazines", title: 'mags'},
         {name: "regions", url: "regions", title: 'regions'},
     ];
-
-    $scope.defaultUrl = $mySettings.apiUri;
-    $scope.customUrl = getCookie("customUrl");
 
     $scope.isActive = function(route) {
         return route === $location.path();
