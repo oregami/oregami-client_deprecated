@@ -6,10 +6,6 @@ angular.module('oregamiClientApp')
 
     $translatePartialLoader.addPart('games');
 
-    $scope.test = function() {
-         console.log('GamesCtrl.test() called');
-         $gamesService.test();
-    };
     $scope.getGames = function() {
         console.log('GamesCtrl.games() called');
         $gamesService.getGames().then(function(d) {
