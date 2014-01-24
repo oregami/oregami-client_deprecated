@@ -1,0 +1,66 @@
+<p>This is the gameTitles view.</p>
+
+<hr/>
+
+<span translate>title_to_edit</span>:
+<select ng-model="gameTitleToEdit"
+        ng-options='gameTitle.nativeSpelling + (gameTitle.standardTransliteration==null?"":" (" + gameTitle.standardTransliteration+ ")") for gameTitle in gameTitleList'
+        ng-change='loadGameTitle(gameTitleToEdit.id)'></select>
+
+<hr/>
+
+<form novalidate class="simple-form">
+
+<table>
+    <tr>
+        <td>
+    gameTitle.id:
+        </td>
+        <td>
+            <!--<input type="text" ng-model="gameTitle.id">-->
+            {{ gameTitle.id }}
+        </td>
+        <td>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            gameTitle.version:
+        </td>
+        <td>
+           {{ gameTitle.version }}
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            gameTitle.nativeSpelling:
+        </td>
+        <td>
+            <input size="50"  type="text" ng-model="gameTitle.nativeSpelling">
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>
+            gameTitle.standardTransliteration:
+        </td>
+        <td>
+            <input size="50"  type="text" ng-model="gameTitle.standardTransliteration">
+        </td>
+    </tr>
+
+
+    <tr>
+        <td colspan="2">
+            <!--<button ng-click="saveGameTitle(gameTitle)">SAVE</button>-->
+            <button ng-click="updateGameTitle(gameTitle)">UPDATE</button>
+        </td>
+    </tr>
+
+</table>
+
+
+</form>

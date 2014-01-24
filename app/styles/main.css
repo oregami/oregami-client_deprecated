@@ -86,3 +86,8 @@ h3 {
     margin-top: 1px;
     margin-bottom: 2px;
 }
+
+
+td {
+    text-align: left;
+}

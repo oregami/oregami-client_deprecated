@@ -10,6 +10,7 @@ angular.module('oregamiClientApp')
     $scope.navlist = [
         {name: "home", url: "", title:"home of the site"},
         {name: "games", url: "games", title: "list all games"},
+        {name: "gameTitles", url: "gameTitles", title: 'gameTitles'},
         {name: "persons", url: "persons", title: 'all persons'},
         {name: "companies", url: "companies", title: 'view all companies'},
         {name: "magazines", url: "magazines", title: 'mags'},

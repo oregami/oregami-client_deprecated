@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('GamesCtrl', ['$scope', 'gamesService', '$translate', '$translatePartialLoader',
-                   function ($scope,  $gamesService,   $translate,   $translatePartialLoader) {
+  .controller('GamesCtrl', ['$scope', 'gamesService', '$translate', '$translatePartialLoader', 'Restangular',
+                   function ($scope,  $gamesService,   $translate,   $translatePartialLoader,   Restangular) {
 
     $translatePartialLoader.addPart('games');
 
@@ -25,8 +25,6 @@ angular.module('oregamiClientApp')
             $gamesService.updateGame(game);
         };
         */
-
-
 
 
   }]);
