@@ -15,6 +15,9 @@ var app = angular.module('oregamiClientApp',
 
     //RestangularProvider.setBaseUrl('http://localhost:8080');
     RestangularProvider.setBaseUrl('http://test.server.oregami.org');
+
+
+
     cfpLoadingBarProvider.includeSpinner = false;
 
     $routeProvider
@@ -54,12 +57,17 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'views/regions.html',
         controller: 'RegionsCtrl'
       })
+      .when('/gameTitles', {
+        templateUrl: 'views/gameTitles.html',
+        controller: 'GameTitlesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
 
 
   })
+
 
 ;
 
@@ -69,6 +77,7 @@ app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($
     $translatePartialLoaderProvider.addPart('navigation');
     $translatePartialLoaderProvider.addPart('games');
     $translatePartialLoaderProvider.addPart('regions');
+    $translatePartialLoaderProvider.addPart('gameTitles');
 
     $translateProvider.useLoader('$translatePartialLoader', {
         urlTemplate: '/language/{part}_{lang}.json'
