@@ -7,6 +7,6 @@ open source game database (work in progess)
 This is the web client written in JavaScript and HTML.
 It uses AngularJS (http://angularjs.org/).
 
-Open "index.html" in the folder "app" via a local webserver.
-The client tries to access our running test-server at http://test.server.oregami.org:6080 . 
-If you changed the server config (host, port) then change the client configuration in "app/scripts/app.js" (search for "constant('mySettings'...") or directly in the web frontend.
+Run the command "grunt server", this automatically opens your web browser at http://localhost:9000/#/ with automatic refresh (Live Reload) after each file change!
+
+If you changed the server config (host, port) then change the client configuration in "app/scripts/app.js" (search for "RestangularProvider.setBaseUrl(..." and enter the URL for your local REST server.
