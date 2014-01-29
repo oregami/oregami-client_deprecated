@@ -12,6 +12,7 @@ angular.module('oregamiClientApp')
                     console.log(gameTitleEdited);
                     $gameTitleService.updateGameTitle(gameTitleEdited);
                     $scope.refreshList();
+                    $scope.gameTitle = null;
                     $scope.$apply();
                 };
                 $scope.saveGameTitle = function (gameTitle) {
@@ -20,11 +21,11 @@ angular.module('oregamiClientApp')
                     $gameTitleService.saveGameTitle(gameTitle2);
                 };
                 $scope.loadGameTitle = function (id) {
-                    console.log(id);
                     $gameTitleService.loadGameTitle(id).then(function (gameTitleLoaded) {
                         $scope.gameTitle = gameTitleLoaded;
                     });
-                    console.log($scope.gameTitle);
+
+
                 }
 
                 $scope.refreshList = function () {
@@ -35,5 +36,10 @@ angular.module('oregamiClientApp')
                 }
 
                 $scope.refreshList();
+
+                //Restangular.all("language").getList().then(function(languages) {
+                //    $scope.availableLanguages = languages;
+                //});
+                $scope.availableLanguages = Restangular.all("language").getList().$object;
 
             }]);

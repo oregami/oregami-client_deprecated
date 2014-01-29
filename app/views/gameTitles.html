@@ -2,6 +2,7 @@
 
 <hr/>
 
+
 <span translate>title_to_edit</span>:
 <select ng-model="gameTitleToEdit"
         ng-options='gameTitle.nativeSpelling + (gameTitle.standardTransliteration==null?"":" (" + gameTitle.standardTransliteration+ ")") for gameTitle in gameTitleList'
@@ -9,6 +10,7 @@
 
 <hr/>
 
+<span ng-show="gameTitle">
 <form novalidate class="simple-form">
 
 <table>
@@ -42,6 +44,16 @@
         </td>
     </tr>
 
+    <tr>
+        <td>
+            gameTitle.language:
+        </td>
+        <td>
+            <select ng-model="gameTitle.language.id"
+                    ng-options='l.id as l.name for l in availableLanguages'></select>
+        </td>
+    </tr>
+
 
     <tr>
         <td>
@@ -64,3 +76,4 @@
 
 
 </form>
+</span>
