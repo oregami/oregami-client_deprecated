@@ -9,11 +9,12 @@ angular.module('oregamiClientApp')
 
                 $scope.updateGameTitle = function (gameTitle) {
                     var gameTitleEdited = Restangular.copy(gameTitle);
-                    console.log(gameTitleEdited);
                     $gameTitleService.updateGameTitle(gameTitleEdited);
-                    $scope.refreshList();
                     $scope.gameTitle = null;
-                    $scope.$apply();
+                    $scope.gameTitleToEdit = null;
+                    window.setTimeout($scope.refreshList,500);
+
+
                 };
                 $scope.saveGameTitle = function (gameTitle) {
                     var gameTitle2 = angular.copy(gameTitle);
@@ -29,7 +30,7 @@ angular.module('oregamiClientApp')
                 }
 
                 $scope.refreshList = function () {
-                    console.log('refreshList');
+                    $scope.gameTitleList = null;
                     $gameTitleService.getAll().then(function (list) {
                         $scope.gameTitleList = list;
                     });
