@@ -91,3 +91,12 @@ h3 {
 td {
     text-align: left;
 }
+
+#publicationsContainer {
+    text-align: left;
+}
+
+.contentContainer {
+    text-align: left;
+    padding: 10px;
+}

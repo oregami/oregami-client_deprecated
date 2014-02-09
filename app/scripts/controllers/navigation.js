@@ -13,7 +13,7 @@ angular.module('oregamiClientApp')
         {name: "gameTitles", url: "gameTitles", title: 'gameTitles'},
         {name: "persons", url: "persons", title: 'all persons'},
         {name: "companies", url: "companies", title: 'view all companies'},
-        {name: "magazines", url: "magazines", title: 'mags'},
+        {name: "publications", url: "publications", title: 'show publications'},
         {name: "regions", url: "regions", title: 'regions'},
     ];
 

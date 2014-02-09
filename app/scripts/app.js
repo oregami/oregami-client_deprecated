@@ -41,9 +41,9 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'views/companies.html',
         controller: 'CompaniesCtrl'
       })
-      .when('/magazines', {
-        templateUrl: 'views/magazines.html',
-        controller: 'MagazinesCtrl'
+      .when('/publications', {
+        templateUrl: 'views/publications.html',
+        controller: 'PublicationsCtrl'
       })
       .when('/config', {
         templateUrl: 'views/config.html',
@@ -74,10 +74,13 @@ var app = angular.module('oregamiClientApp',
 
 app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($translateProvider, $translatePartialLoaderProvider) {
 
+    $translatePartialLoaderProvider.addPart('main');
     $translatePartialLoaderProvider.addPart('navigation');
     $translatePartialLoaderProvider.addPart('games');
     $translatePartialLoaderProvider.addPart('regions');
     $translatePartialLoaderProvider.addPart('gameTitles');
+    $translatePartialLoaderProvider.addPart('publications');
+    $translatePartialLoaderProvider.addPart('languages');
 
     $translateProvider.useLoader('$translatePartialLoader', {
         urlTemplate: '/language/{part}_{lang}.json'

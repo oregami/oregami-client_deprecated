@@ -1,0 +1,29 @@
+<div class="contentContainer">
+
+    <div ng-show="publications">
+
+        <h2 translate>publications</h2> <br/>
+
+        <div ng-repeat="publicationFranchise in publications">
+
+            <h3><span translate>franchise</span>: {{ publicationFranchise.name}}</h3>
+            <ul>
+                <li ng-repeat="publication in publicationFranchise.publicationList">
+                    {{ publication.name }}
+                    <span ng-show="publication.language">({{ publication.language.name | translate }}) </span>
+
+                    <ul>
+                        <li ng-repeat="issue in publication.publicationIssueList">
+                            {{ issue.issueNameNumber }} / {{ issue.issueNameYear }}
+
+                    </ul>
+
+            </ul>
+            <br/>
+        </div>
+
+
+    </div>
+
+</div>
+
