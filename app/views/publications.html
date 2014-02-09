@@ -15,6 +15,12 @@
                     <ul>
                         <li ng-repeat="issue in publication.publicationIssueList">
                             {{ issue.issueNameNumber }} / {{ issue.issueNameYear }}
+                            <span ng-show="issue.releaseDate">
+                                (
+                                <span translate>release_date</span>:
+                                {{ issue.releaseDate[0] + '-' + issue.releaseDate[1] + '-' + issue.releaseDate[2]}}
+                                )
+                            </span>
 
                     </ul>
 
