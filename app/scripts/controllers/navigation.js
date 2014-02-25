@@ -2,8 +2,8 @@
 
 angular.module('oregamiClientApp')
   .controller('NavigationCtrl',
-            ['$scope', '$location', '$route', '$translate', '$translatePartialLoader',
-    function ($scope,   $location,   $route, $translate,     $translatePartialLoader) {
+            ['$scope', '$location', '$route', '$translate', '$translatePartialLoader', 'API_URL',
+    function ($scope,   $location,   $route, $translate,     $translatePartialLoader, API_URL) {
 
     $translatePartialLoader.addPart('navigation');
 
@@ -15,6 +15,7 @@ angular.module('oregamiClientApp')
         {name: "companies", url: "companies", title: 'view all companies'},
         {name: "publications", url: "publications", title: 'show publications'},
         {name: "regions", url: "regions", title: 'regions'},
+        {name: "websites", url: "websites", title: 'websites'},
     ];
 
     $scope.isActive = function(route) {
@@ -23,6 +24,8 @@ angular.module('oregamiClientApp')
 
     $scope.$location = $location;
     $scope.$route = $route;
+
+    $scope.API_URL = API_URL;
 
 
   }]);

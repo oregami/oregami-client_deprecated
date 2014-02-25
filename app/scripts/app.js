@@ -10,13 +10,18 @@ var app = angular.module('oregamiClientApp',
             ]
     )
 
+    //.constant("API_URL", "http://localhost:8080")
+    .constant("API_URL", "http://test.server.oregami.org")
 
-  .config(function ($routeProvider, RestangularProvider, cfpLoadingBarProvider) {
+    .filter('reverse', function() {
+        return function(items) {
+            return items.slice().reverse();
+        };
+    })
 
-    //RestangularProvider.setBaseUrl('http://localhost:8080');
-    RestangularProvider.setBaseUrl('http://test.server.oregami.org');
+  .config(function ($routeProvider, RestangularProvider, cfpLoadingBarProvider, API_URL) {
 
-
+    RestangularProvider.setBaseUrl(API_URL);
 
     cfpLoadingBarProvider.includeSpinner = false;
 
@@ -61,6 +66,14 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'views/gameTitles.html',
         controller: 'GameTitlesCtrl'
       })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
+      .when('/websites', {
+        templateUrl: 'views/website.html',
+        controller: 'WebsiteCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -81,6 +94,7 @@ app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($
     $translatePartialLoaderProvider.addPart('gameTitles');
     $translatePartialLoaderProvider.addPart('publications');
     $translatePartialLoaderProvider.addPart('languages');
+    $translatePartialLoaderProvider.addPart('websites');
 
     $translateProvider.useLoader('$translatePartialLoader', {
         urlTemplate: '/language/{part}_{lang}.json'
