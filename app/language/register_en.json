@@ -1,0 +1,14 @@
+{
+
+    "register_developer_message" : "Please DO NOT USE REAL data, as this is only a development test. All data can be erased any time.",
+    "continue" : "continue",
+
+    "username" : "Username",
+    "email" : "Mail address",
+    "password" : "Password",
+    "USER_USERNAME_ALREADY_EXISTS": "Username already exists.",
+    "USER_EMAIL_EMPTY" : "Mail address is empty.",
+    "USER_PASSWORD_EMPTY": "Password is empty." ,
+    "USER_PASSWORD_TOO_SHORT" : "Password is too short."
+
+}

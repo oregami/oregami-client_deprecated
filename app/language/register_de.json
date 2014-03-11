@@ -1,0 +1,14 @@
+{
+
+    "register_developer_message" : "Bitte KEINE ECHTEN DATEN verwenden, da dies nur ein Entwicklungsstand ist. Alle Daten können jederzeit gelöscht werden.",
+    "continue" : "weiter",
+
+    "username" : "Benutzername",
+    "email" : "E-Mail",
+    "password" : "Passwort",
+    "USER_USERNAME_ALREADY_EXISTS": "Benutzername existiert bereits.",
+    "USER_EMAIL_EMPTY" : "E-Mail-Adresse muss angegeben werden.",
+    "USER_PASSWORD_EMPTY": "Passwort muss angegeben werden." ,
+    "USER_PASSWORD_TOO_SHORT" : "Password ist zu kurz."
+
+}
