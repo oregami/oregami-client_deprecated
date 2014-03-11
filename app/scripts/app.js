@@ -95,6 +95,7 @@ app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($
     $translatePartialLoaderProvider.addPart('publications');
     $translatePartialLoaderProvider.addPart('languages');
     $translatePartialLoaderProvider.addPart('websites');
+    $translatePartialLoaderProvider.addPart('register');
 
     $translateProvider.useLoader('$translatePartialLoader', {
         urlTemplate: '/language/{part}_{lang}.json'
