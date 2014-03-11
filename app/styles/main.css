@@ -16,6 +16,10 @@ a {
     left: 10px;
 }
 
+.error {
+    color: #ff0000;
+}
+
 .hero-unit {
     margin: 10px auto 0 auto;
     width: 400px;
