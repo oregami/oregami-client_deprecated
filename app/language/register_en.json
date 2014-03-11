@@ -2,6 +2,8 @@
 
     "register_developer_message" : "Please DO NOT USE REAL data, as this is only a development test. All data can be erased any time.",
     "continue" : "continue",
+    "reset" : "reset",
+    "submit" : "submit",
 
     "username" : "Username",
     "email" : "Mail address",
