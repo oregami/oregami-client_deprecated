@@ -9,6 +9,7 @@
     "email" : "Mail address",
     "password" : "Password",
     "USER_USERNAME_ALREADY_EXISTS": "Username already exists.",
+    "USER_USERNAME_TOO_SHORT" : "Username is too short (at least 3 characters).",
     "USER_EMAIL_EMPTY" : "Mail address is empty.",
     "USER_PASSWORD_EMPTY": "Password is empty." ,
     "USER_PASSWORD_TOO_SHORT" : "Password is too short."
