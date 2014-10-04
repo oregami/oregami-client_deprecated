@@ -8,7 +8,6 @@ var app = angular.module('oregamiClientApp',
             'restangular',
             'chieffancypants.loadingBar',
             'ngAnimate',
-            'http-auth-interceptor',
             'mgcrea.ngStrap',
             'ngSanitize'
         ]

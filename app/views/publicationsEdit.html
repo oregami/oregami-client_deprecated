@@ -3,11 +3,11 @@
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">PublicationFranchise data
+            <h3 class="panel-title"><span translate>franchise</span>
                 <span class="smallInfo">id={{publicationFranchise.id}}</span>
                 &nbsp;&nbsp;&nbsp;
-                <button class="btn btn-success" ng-click="ctrl.updatePublicationFranchise(publicationFranchise)">Save</button>
-                <button class="btn btn-warning" ng-click="ctrl.goBack()">Cancel</button>
+                <button class="btn btn-success" ng-click="ctrl.updatePublicationFranchise(publicationFranchise)" translate>save</button>
+                <button class="btn btn-warning" ng-click="ctrl.goBack()" translate>cancel</button>
 
             </h3>
         </div>
@@ -26,14 +26,14 @@
         </div>
 
         <div class="panel-heading">
-            <h3 class="panel-title">Publications
+            <h3 class="panel-title" translate>publications
             </h3>
         </div>
         <div class="panel-body">
 
             <div class="panel panel-primary" ng-repeat="publication in publicationFranchise.publicationList">
                 <div class="panel-heading">
-                    Publication
+                    <span translate>publication</span>
                     <span class="smallInfo">id={{publication.id}}</span>
                     <button class="btn btn-default btn-xs" ng-click="ctrl.removePublication(publicationFranchise, publication)">
                         <span class="glyphicon glyphicon-remove"></span>
@@ -54,7 +54,7 @@
 
                 <!-- issues -->
                 <div class="panel-heading">
-                        {{publication.publicationIssueList.length}} Issues
+                        {{publication.publicationIssueList.length}} <span translate>issues</span>
                         <button class="btn" ng-click="showIssues = publication.id" ng-show="showIssues != publication.id">
                             <span style="color: #000000;">show</span>
                         </button>
@@ -100,8 +100,8 @@
         </div>
 
         <div class="panel-footer">
-            <button class="btn btn-success" ng-click="ctrl.updatePublicationFranchise(publicationFranchise)">Save</button>
-            <button class="btn btn-warning" ng-click="ctrl.goBack()">Cancel</button>
+            <button class="btn btn-success" ng-click="ctrl.updatePublicationFranchise(publicationFranchise)" translate>save</button>
+            <button class="btn btn-warning" ng-click="ctrl.goBack()" translate>cancel</button>
         </div>
     </div>
 

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('PublicationeditCtrl', function ($scope, $routeParams, publicationService, Restangular, $location) {
+  .controller('PublicationeditCtrl', function ($scope, $routeParams, publicationService, Restangular, $location, $translate, $translatePartialLoader) {
+
+        $translatePartialLoader.addPart('publications');
 
         var _this = this;
 

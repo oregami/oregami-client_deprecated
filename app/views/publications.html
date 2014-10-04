@@ -38,26 +38,11 @@
             </span>
             <span translate>franchise</span>: {{ one.name }}
             <a href="#/publications/edit/{{one.id}}">
-                <button type="button" class="btn btn-default">Edit</button>
+                <button type="button" class="btn btn-default" translate>edit</button>
             </a>
         </h3>
 
-
-
-        <!--
-        <ul class="nav nav-tabs" role="tablist">
-            <li ng-repeat="publication in one.publicationList"
-                ng-class="{'active': activePublicationId==publication.id}">
-                <a href="" ng-click="activatePublication(publication.id);">{{publication.name}}</a>
-            </li>
-        </ul>
-
-        <div ng-repeat="publication in one.publicationList">
-            <div ng-repeat="issue in publication.publicationIssueList" ng-show="activePublicationId==publication.id">
-                {{ issue.issueNameNumber }} / {{ issue.issueNameYear }}
-            </div>
-        </div>
-        -->
+        <div><span translate>last_changed</span>: {{one.changeTimeGui}}</div>
 
 
         <table class="table table-striped"
@@ -72,7 +57,15 @@
             </tr>
          </table>
 
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" translate>revisions
+                </h3>
+            </div>
+            <div class="panel-body">
+                {{revisions}}
+            </div>
+        </div>
 
 
     </div>

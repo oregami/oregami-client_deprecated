@@ -25,7 +25,7 @@
         -->
         <tr>
             <td colspan="2" style="text-align: center;">
-                <button ng-click="createWebsite(newwebsite);">CREATE</button>
+                <button class="btn btn-default" ng-click="createWebsite(newwebsite);">CREATE</button>
             </td>
         </tr>
 
@@ -34,11 +34,11 @@
 
 </form>
 
-<button ng-click="refreshList()">REFRESH_LIST</button>
+<button class="btn btn-default" ng-click="refreshList()">REFRESH_LIST</button>
 
 <br/>
 <span ng-repeat="website in websites">
-    <a ng-href="{{baseUrl + '' + website.href_big}}" target="_blank">
-        <img ng-src="{{baseUrl + '' + website.href_thumb}}" title="{{ website.url }} {{ website.createTime }}"/>
+    <a ng-href="{{API + '' + website.href_big}}" target="_blank">
+        <img ng-src="{{API + '' + website.href_thumb}}" title="{{ website.url }} {{ website.createTime }}"/>
     </a>
 </span>

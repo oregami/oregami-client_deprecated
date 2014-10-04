@@ -12,3 +12,7 @@ border-color: #8EABE4;
 .active {
     font-weight: bold;
 }
+
+.smallInfo {
+    font-size: 65%;
+}

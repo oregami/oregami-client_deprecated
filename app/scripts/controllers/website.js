@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-    .controller('WebsiteCtrl', ['$scope', 'websiteService', '$translate', '$translatePartialLoader', 'API_URL',
-        function ($scope, $websiteService, $translate, $translatePartialLoader, API_URL) {
+    .controller('WebsiteCtrl', ['$scope', 'websiteService', '$translate', '$translatePartialLoader',
+        function ($scope, $websiteService, $translate, $translatePartialLoader) {
 
             $translatePartialLoader.addPart('websites');
 
@@ -28,7 +28,5 @@ angular.module('oregamiClientApp')
 
             //load regions:
             $scope.getWebsites();
-
-            $scope.baseUrl = API_URL;
 
         }]);

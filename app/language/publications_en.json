@@ -2,5 +2,12 @@
 
     "franchise" : "Franchise",
     "release_date": "Release date",
-    "publication" : "Publication"
+    "publication" : "Publication",
+    "publications" : "Publications",
+    "last_changed" : "last change",
+    "revisions" : "revisions",
+    "edit" : "edit",
+    "save" : "save",
+    "cancel" : "cancel",
+    "issues" : "issues"
 }

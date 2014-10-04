@@ -2,5 +2,12 @@
 
     "franchise" : "Marke",
     "release_date": "Erscheinungsdatum"   ,
-    "publication" : "Publikation"
+    "publication" : "Publikation",
+    "publications" : "Publikationen",
+    "last_changed" : "letzte Änderung" ,
+    "revisions" : "Versionen",
+    "edit" : "bearbeiten",
+    "save" : "speichern",
+    "cancel" : "abbrechen",
+    "issues" : "Ausgaben"
 }
