@@ -1,13 +1,37 @@
 
 
-<h3><span translate>REGIONS</span>:</h3>
-<div ng-repeat="region in regions | filter: { country: false}">{{ region.name | translate }}
-    (<span translate>REGION</span>)
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title" translate>
+            REGIONS
+        </h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped" ng-show="!isLoading>0">
+
+            <tr ng-repeat="region in regions | filter: { country: false}">
+                <td>
+                    {{region.name | translate}}
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
-<br/>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title" translate>
+            COUNTRIES
+        </h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped" ng-show="!isLoading>0">
 
-<h3><span translate>COUNTRIES</span>:</h3>
-<div ng-repeat="region in regions | filter: { country: true}">{{ region.name | translate }}
-    (<span translate>COUNTRY</span>)
+            <tr ng-repeat="region in regions | filter: { country: true}">
+                <td>
+                    {{region.name | translate}}
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

@@ -1,0 +1,15 @@
+<div class="footer" ng-controller="FooterCtrl">
+    <hr/>
+    <p><span class="glyphicon glyphicon-globe"></span> API: {{ API }}
+        <button bs-modal="modal"
+                data-title="Edit API URL"
+                data-html="true"
+                data-template="views/modal/editApi.html"
+                type="button"
+                class="btn btn-default btn-xs"
+                ng-click="startModal()"
+        >
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+    </p>
+</div>

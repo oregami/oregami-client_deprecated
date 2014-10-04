@@ -1,112 +1,14 @@
-body {
-    background: #ffffff;
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #333;
-    font-size: 13px;
 
+.select {
+    color:black;
 }
 
-a {
-    color:#000000;
+.x-boundlist-selected {
+    background: #00F00F;   // define your own color
+border-color: #8EABE4;
 }
 
-#API_URL {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-}
-
-.error {
-    color: #ff0000;
-}
-
-.hero-unit {
-    margin: 10px auto 0 auto;
-    width: 400px;
-    font-size: 18px;
-    line-height: 20px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 20px;
-}
-
-.hero-unit h1 {
-    font-size: 40px;
-    line-height: 1;
-    letter-spacing: -1px;
-}
-
-#siteContainer {
-    text-align: center;
-    width: 900px;
-    background-color: #eeeeee;
-    min-height: 700px;
-}
-
-#navContainer {
-    text-align: center;
-    background-color: #dddddd;
-}
-
-#navDetails {
-    display:inline;
-    float: right;
-    top: 0px;
-    right: 0px;
-    font-size: 80%;
-    text-align: left;
-}
-ul.nav {
-    margin: 0; padding: 2pt;
-}
-ul.nav li {
-    list-style: none;
-    margin: 2px; padding: 2pt;
-    display:inline;
-    border: 1px solid #ddddff;
-}
 
 .active {
-    color: green;
-    text-decoration: none;
-}
-
-.activeLanguage {
-    border: 2px solid red;
-}
-
-#gameListContainer {
-    text-align: left;
-}
-
-.flag {
-    padding: 2px;
-}
-
-.gameContainer {
-    border: 0px dotted grey;
-}
-
-h2 {
-    margin-top: 2px;
-    margin-bottom: 4px;
-}
-
-h3 {
-    margin-top: 1px;
-    margin-bottom: 2px;
-}
-
-
-td {
-    text-align: left;
-}
-
-#publicationsContainer {
-    text-align: left;
-}
-
-.contentContainer {
-    text-align: left;
-    padding: 10px;
+    font-weight: bold;
 }

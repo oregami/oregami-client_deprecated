@@ -7,19 +7,18 @@ var app = angular.module('oregamiClientApp',
             'ngRoute',
             'restangular',
             'chieffancypants.loadingBar',
-            'ngAnimate'
+            'ngAnimate',
+            'http-auth-interceptor',
+            'mgcrea.ngStrap',
+            'ngSanitize'
         ]
     )
 
-        .filter('reverse', function () {
-            return function (items) {
-                return items.slice().reverse();
-            };
-        })
 
-        .config(function ($routeProvider, RestangularProvider, cfpLoadingBarProvider, API_URL) {
 
-            RestangularProvider.setBaseUrl(API_URL);
+        .config(function ($routeProvider, RestangularProvider, cfpLoadingBarProvider) {
+
+            //RestangularProvider.setBaseUrl(API_URL);
 
             cfpLoadingBarProvider.includeSpinner = false;
 
@@ -47,6 +46,14 @@ var app = angular.module('oregamiClientApp',
                 .when('/publications', {
                     templateUrl: 'views/publications.html',
                     controller: 'PublicationsCtrl'
+                })
+                .when('/publications/:publicationsId', {
+                    templateUrl: 'views/publications.html',
+                    controller: 'PublicationsCtrl'
+                })
+                .when('/publications/edit/:publicationsId', {
+                    templateUrl: 'views/publicationsEdit.html',
+                    controller: 'PublicationeditCtrl as ctrl'
                 })
                 .when('/config', {
                     templateUrl: 'views/config.html',
@@ -81,6 +88,26 @@ var app = angular.module('oregamiClientApp',
 
 
     ;
+
+app.run(function($rootScope, Restangular) {
+    //$rootScope.API = "http://dropwizard-guice-jpa-seed.oregami.org";
+    $rootScope.API = "http://localhost:8080";
+    //$rootScope.API = "http://192.168.59.103:8080";
+    Restangular.setBaseUrl($rootScope.API);
+    Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {
+        $rootScope.errordata = response.data;
+        return response;
+    });
+    $rootScope.isLoading = 0;
+    Restangular.addRequestInterceptor(function(element) {
+        $rootScope.isLoading++;
+        return element;
+    });
+    Restangular.addResponseInterceptor(function(data) {
+        $rootScope.isLoading--;;
+        return data;
+    });
+})
 
 
 app.config(['$translateProvider', '$translatePartialLoaderProvider', function ($translateProvider, $translatePartialLoaderProvider) {

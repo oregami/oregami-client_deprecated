@@ -37,7 +37,7 @@
 <button ng-click="refreshList()">REFRESH_LIST</button>
 
 <br/>
-<span ng-repeat="website in websites | reverse">
+<span ng-repeat="website in websites">
     <a ng-href="{{baseUrl + '' + website.href_big}}" target="_blank">
         <img ng-src="{{baseUrl + '' + website.href_thumb}}" title="{{ website.url }} {{ website.createTime }}"/>
     </a>

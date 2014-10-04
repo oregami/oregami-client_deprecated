@@ -1,5 +1,6 @@
 {
 
     "franchise" : "Marke",
-    "release_date": "Erscheinungsdatum"
+    "release_date": "Erscheinungsdatum"   ,
+    "publication" : "Publikation"
 }

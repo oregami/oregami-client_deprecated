@@ -1,30 +1,78 @@
 <div class="contentContainer">
 
-    <div ng-show="publications">
+    <div ng-show="list && ! id">
 
-        <h2 translate>publications</h2> <br/>
+        <h3 translate>publications</h3> <br/>
 
-        <div ng-repeat="publicationFranchise in publications">
+        <table class="table table-striped" ng-show="!isLoading>0">
+            <tr>
+                <th><span translate>franchise</span></th>
+                <th><span translate>publications</span></th>
+            </tr>
 
-            <h3><span translate>franchise</span>: {{ publicationFranchise.name}}</h3>
-            <ul>
-                <li ng-repeat="publication in publicationFranchise.publicationList">
-                    {{ publication.name }}
-                    <span ng-show="publication.language">({{ publication.language.name | translate }}) </span>
+            <tr ng-repeat="publicationFranchise in list">
+                <td><a ng-href="#/publications/{{publicationFranchise.id}}">{{publicationFranchise.name}}</a></td>
 
-                    <ul>
-                        <li ng-repeat="issue in publication.publicationIssueList">
-                            {{ issue.issueNameNumber }} / {{ issue.issueNameYear }}
-                            <span ng-show="issue.releaseDate">
-                                (<span translate>release_date</span>:
-                                {{ issue.releaseDate }})
-                            </span>
+                <td>
+                    <span ng-repeat="publication in publicationFranchise.publicationList">
+                        {{ publication.name }}
+                        <span ng-show="true || publication.language">
+                            ({{ publication.language.name }})
+                            {{$last ? '' : ', '}}
+                        </span>
+                    </span>
+                </td>
+            </tr>
+        </table>
 
-                    </ul>
+    </div>
 
-            </ul>
-            <br/>
+
+
+    <div ng-show="id">
+
+        <h3>
+            <span style="font-size: 70%;">
+                <a href="#/publications" translate>publications</a>
+                /
+            </span>
+            <span translate>franchise</span>: {{ one.name }}
+            <a href="#/publications/edit/{{one.id}}">
+                <button type="button" class="btn btn-default">Edit</button>
+            </a>
+        </h3>
+
+
+
+        <!--
+        <ul class="nav nav-tabs" role="tablist">
+            <li ng-repeat="publication in one.publicationList"
+                ng-class="{'active': activePublicationId==publication.id}">
+                <a href="" ng-click="activatePublication(publication.id);">{{publication.name}}</a>
+            </li>
+        </ul>
+
+        <div ng-repeat="publication in one.publicationList">
+            <div ng-repeat="issue in publication.publicationIssueList" ng-show="activePublicationId==publication.id">
+                {{ issue.issueNameNumber }} / {{ issue.issueNameYear }}
+            </div>
         </div>
+        -->
+
+
+        <table class="table table-striped"
+               ng-repeat="publication in one.publicationList">
+            <tr>
+                <th>
+                    {{publication.name}}
+                </th>
+            </tr>
+            <tr ng-repeat="issue in publication.publicationIssueList">
+                <td>{{ issue.issueNameNumber }} / {{ issue.issueNameYear }}</td>
+            </tr>
+         </table>
+
+
 
 
     </div>

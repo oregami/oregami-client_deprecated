@@ -1,20 +1,53 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('PublicationsCtrl', ['$scope', 'publicationService', '$translate', '$translatePartialLoader',
-         function ($scope,  $publicationService,   $translate,   $translatePartialLoader) {
+  .controller('PublicationsCtrl', ['$scope', 'publicationService', '$translate', '$translatePartialLoader', '$routeParams',
+         function ($scope,  $publicationService,   $translate,   $translatePartialLoader, $routeParams) {
+
+             var service = $publicationService;
+             
+             $scope.id = $routeParams.publicationsId;
 
              $translatePartialLoader.addPart('publications');
              $translatePartialLoader.addPart('languages');
 
-             $scope.getPublications = function() {
-                 $publicationService.getPublications().then(function(d) {
-                     $scope.publications = d;
-                 });
+             $scope.loadAll = function() {
+                 $scope.list = service.getAll();
              };
+             $scope.loadOne = function(id) {
+                 $scope.loadOneWithRevision(id, null);
+             }
 
-             //load publications:
-             $scope.getPublications();
+             $scope.loadOneWithRevision = function(id, revision) {
+                 $scope.revisions = service.getOneRevisionNumbers($scope.id);
+                 $scope.currentRevision = revision;
+                 if (revision==null) {
+                     service.getOne($scope.id).then(function (t) {
+                         $scope.one = t;
+                     });
+                 } else {
+                     service.getOneWithRevision($scope.id, $scope.revision).then(function (t) {
+                         $scope.one = t;
+                     });
+                 }
+
+             }
+
+             if ($scope.id==null) {
+                 $scope.loadAll();
+             } else {
+                 $scope.list = {};
+                 if ($routeParams.revision!=null) {
+                     $scope.revision = $routeParams.revision;
+                     $scope.loadOneWithRevision($scope.id, $scope.revision);
+                 } else {
+                     $scope.loadOne($scope.id);
+                 }
+             }
+
+             $scope.activatePublication = function(pId) {
+                 $scope.activePublicationId=pId;
+             }
 
 
   }]);

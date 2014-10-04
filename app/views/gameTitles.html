@@ -4,7 +4,8 @@
 
 
 <span translate ng-show="gameTitleList">title_to_edit</span>:
-<select ng-model="gameTitleToEdit"
+<select  class="select"
+        ng-model="gameTitleToEdit"
         ng-options='gameTitle.nativeSpelling + (gameTitle.standardTransliteration==null?"":" (" + gameTitle.standardTransliteration+ ")") for gameTitle in gameTitleList'
         ng-change='loadGameTitle(gameTitleToEdit.id)'></select>
 <hr/>
@@ -48,7 +49,8 @@
             gameTitle.language:
         </td>
         <td>
-            <select ng-model="gameTitle.language.id"
+            <select class="select"
+                    ng-model="gameTitle.language.id"
                     ng-options='l.id as l.name for l in availableLanguages'></select>
         </td>
     </tr>
@@ -67,7 +69,7 @@
     <tr>
         <td colspan="2">
             <!--<button ng-click="saveGameTitle(gameTitle)">SAVE</button>-->
-            <button ng-click="updateGameTitle(gameTitle)">UPDATE</button>
+            <button class="btn btn-primary" type="button" ng-click="updateGameTitle(gameTitle)">UPDATE</button>
         </td>
     </tr>
 

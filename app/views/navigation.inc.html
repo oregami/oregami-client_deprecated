@@ -1,27 +1,37 @@
-<div ng-controller="NavigationCtrl" id="navContainer">
+<span ng-controller="NavigationCtrl">
 
-    <span id="navDetails">
-
-        <span ng-controller="LanguageCtrl">
-            <div style="float:left;margin-right:1cm;">
-            <a href="" ng-class="{active:preferredLanguage != 'de'}" ng-click="changeLang('en')"><img src="/images/en.png"></a>
-                <br/>
-            <a href="" ng-class="{active:preferredLanguage != 'en'}" ng-click="changeLang('de')"><img src="/images/de.png"></a>
+    <div class="header">
+        <div class="navbar navbar-default" role="navigation" bs-navbar>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">oregami client</a>
             </div>
-        </span>
 
-    </span>
+            <ul class="nav navbar-nav">
+                <li ng-repeat="nav in navlist" data-match-route="/{{nav.url}}">
+                    <a ng-href="#{{nav.url}}">{{nav.name | translate}} </a>
+                </li>
+                <li>
+                    <br/>
+                    <div id="navDetails">
+                    <span ng-controller="LanguageCtrl">
+                            <a href="" ng-class="{active:preferredLanguage != 'de'}" ng-click="changeLang('en')"><img
+                                    src="/images/en.png"></a>
+
+                            <a href="" ng-class="{active:preferredLanguage != 'en'}" ng-click="changeLang('de')"><img
+                                    src="/images/de.png"></a>
+                    </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 
 
-    <ul class="nav">
-        <li ng-repeat="nav in navlist">
-            <a ng-class="{active:isActive('/' + nav.url )}" href="#{{ nav.url }}" title="{{ nav.title }}" translate>{{ nav.name }}</a>
-            <!--<span ng-show="('/'+{{nav.url}}) == {{$location.path()">{{ nav.name }} (current)</span>-->
-        </li>
-    </ul>
-
-
+           <!--
     <div id="API_URL" title="{{API_URL}}">API</div>
-</div>
-<br/>
+               -->
+    <!--
+    <div id="User">{{user.isLogged}} / {{user.username}}</div>
+    -->
+</span>

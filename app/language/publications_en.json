@@ -1,5 +1,6 @@
 {
 
     "franchise" : "Franchise",
-    "release_date": "Release date"
+    "release_date": "Release date",
+    "publication" : "Publication"
 }

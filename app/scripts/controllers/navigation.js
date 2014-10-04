@@ -2,13 +2,13 @@
 
 angular.module('oregamiClientApp')
   .controller('NavigationCtrl',
-            ['$scope', '$location', '$route', '$translate', '$translatePartialLoader', 'API_URL',
-    function ($scope,   $location,   $route, $translate,     $translatePartialLoader, API_URL) {
+            ['$scope', '$location', '$route', '$translate', '$translatePartialLoader', 'userService',
+    function ($scope,   $location,   $route, $translate,     $translatePartialLoader,  User) {
 
     $translatePartialLoader.addPart('navigation');
 
     $scope.navlist = [
-        {name: "home", url: "", title:"home of the site"},
+        //{name: "home", url: "", title:"home of the site"},
         {name: "games", url: "games", title: "list all games"},
         {name: "gameTitles", url: "gameTitles", title: 'gameTitles'},
         {name: "persons", url: "persons", title: 'all persons'},
@@ -25,7 +25,9 @@ angular.module('oregamiClientApp')
     $scope.$location = $location;
     $scope.$route = $route;
 
-    $scope.API_URL = API_URL;
+    var user = new Array();
+    $scope.user = user;
+    $scope.user.isLogged = User.isLogged;
 
 
   }]);
