@@ -8,6 +8,7 @@
             <tr>
                 <th><span translate>franchise</span></th>
                 <th><span translate>publications</span></th>
+                <th><span translate>last_changed</span></th>
             </tr>
 
             <tr ng-repeat="publicationFranchise in list">
@@ -21,6 +22,10 @@
                             {{$last ? '' : ', '}}
                         </span>
                     </span>
+                </td>
+
+                <td>
+                    {{ publicationFranchise.changeTimeGui}}
                 </td>
             </tr>
         </table>
