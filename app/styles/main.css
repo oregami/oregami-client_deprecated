@@ -16,3 +16,7 @@ border-color: #8EABE4;
 .smallInfo {
     font-size: 65%;
 }
+
+.error {
+    color: red;
+}

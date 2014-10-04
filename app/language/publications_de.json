@@ -9,5 +9,7 @@
     "edit" : "bearbeiten",
     "save" : "speichern",
     "cancel" : "abbrechen",
-    "issues" : "Ausgaben"
+    "issues" : "Ausgaben"  ,
+
+    "NAME_EMPTY": "Der Name muss gefüllt sein."
 }

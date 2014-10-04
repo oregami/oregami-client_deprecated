@@ -9,5 +9,7 @@
     "edit" : "edit",
     "save" : "save",
     "cancel" : "cancel",
-    "issues" : "issues"
+    "issues" : "issues"    ,
+
+    "NAME_EMPTY": "The name must not be empty"
 }

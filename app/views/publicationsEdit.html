@@ -14,7 +14,7 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="publicationFranchise.name">name</label>
-                <span class="error">{{ getError('publicationFranchise.name')}}</span>
+                <span class="error">{{ getError('publicationFranchise.name') | translate }}</span>
                 <div class="row">
                     <div class="col-xs-3">
                         <input type="text" class="form-control" id="publicationFranchise.name" ng-model="publicationFranchise.name">
