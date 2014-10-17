@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('PublicationeditCtrl', function ($scope, $routeParams, publicationService, Restangular, $location, $translate, $translatePartialLoader) {
+  .controller('PublicationeditCtrl', function ($scope, $routeParams, publicationService, Restangular, $location, $translate, $translatePartialLoader, errorService) {
 
         $translatePartialLoader.addPart('publications');
 
@@ -27,7 +27,7 @@ angular.module('oregamiClientApp')
         }
 
         this.addPublication = function(publicationFranchise) {
-            publicationFranchise.publicationList.push({});
+            publicationFranchise.publicationList.push({validationId : errorService.validationId()});
         };
 
         this.removePublication = function(publicationFranchise, publication) {
@@ -46,29 +46,12 @@ angular.module('oregamiClientApp')
             }
         };
         this.addIssue = function(publication) {
-            publication.publicationIssueList.push({});
+            publication.publicationIssueList.push({validationId : errorService.validationId()});
         };
 
 
-
-        $scope.getError = function (fieldName, id) {
-            var errors =  $scope.errordata;
-            if (errors!=null) {
-                for (var i = 0; i < errors.length; i++) {
-                    if (typeof errors[i] !='undefined' && errors[i].context.field == fieldName) {
-                        if (id!=null) {
-                            if (id==errors[i].context.id) {
-                                return errors[i].messageName;
-                            }
-                        } else {
-                            return errors[i].messageName;
-                        }
-                    }
-                }
-            }
-            return "";
-        };
-        
-
+        $scope.getError = function(fieldName, entity) {
+            return errorService.getError($scope.errordata, fieldName, entity);
+        }
 
   });
