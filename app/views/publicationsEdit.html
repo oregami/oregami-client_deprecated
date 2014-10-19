@@ -42,7 +42,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="publication.name">name</label>
-                        <span class="text-danger">{{ getError('publication.name', publication)}}</span>
+                        <span class="text-danger">{{ getError('publication.name', publication) | translate }}</span>
                         <div class="row">
                             <div class="col-xs-3">
                                 <input type="text" class="form-control" id="publication.name" ng-model="publication.name">
@@ -77,11 +77,11 @@
                             <div class="form-group">
                                 <label for="issue.issueNameYear">number: </label>
                                 <input type="text" size="2" class="form-inline" id="issue.issueNameNumber" ng-model="issue.issueNameNumber">
-                                <span class="error">{{ getError('publicationIssue.issueNameNumber', issue)}}</span>
+                                <span class="error">{{ getError('publicationIssue.issueNameNumber', issue) | translate }}</span>
                                 <br/>
                                 <label for="issue.issueNameYear">year: </label>
                                 <input type="text" size="5" class="form-inline" id="issue.issueNameYear" ng-model="issue.issueNameYear">
-                                <span class="error">{{ getError('publicationIssue.issueNameYear', issue)}}</span>
+                                <span class="error">{{ getError('publicationIssue.issueNameYear', issue) | translate }}</span>
                             </div>
                         </div>
                     </div>

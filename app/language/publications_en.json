@@ -11,5 +11,6 @@
     "cancel" : "cancel",
     "issues" : "issues"    ,
 
-    "NAME_EMPTY": "The name must not be empty"
+    "NAME_EMPTY": "The name must not be empty",
+    "FIELD_EMPTY": "This field must not be empty"
 }

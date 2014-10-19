@@ -11,5 +11,6 @@
     "cancel" : "abbrechen",
     "issues" : "Ausgaben"  ,
 
-    "NAME_EMPTY": "Der Name muss gefüllt sein."
+    "NAME_EMPTY": "Der Name muss gefüllt sein.",
+    "FIELD_EMPTY": "Dieses Feld muss gefüllt sein."
 }
