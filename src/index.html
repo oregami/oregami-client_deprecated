@@ -25,7 +25,17 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-view></div>
+    <div class="container">
+
+      <!-- site navigation -->
+      <ng-include src="'app/navigation/navigation.inc.html'"></ng-include>
+
+      <!-- site/application content -->
+      <div class="container" ng-view=""></div>
+
+      <ng-include src="'app/footer/footer.html'"></ng-include>
+
+    </div>
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
