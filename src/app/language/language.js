@@ -12,7 +12,7 @@ angular.module('oregamiClientApp')
 
         $scope.changeLang = function (key) {
             //alert(key);
-            $translate.uses(key).then(function (key) {
+            $translate.use(key).then(function (key) {
                 console.log("Switched language to " + key + ".");
                 $scope.preferredLanguage = key;
 
