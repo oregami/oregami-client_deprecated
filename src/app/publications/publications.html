@@ -1,0 +1,79 @@
+<div class="contentContainer">
+
+    <div ng-show="list && ! id">
+
+        <h3 translate>publications</h3> <br/>
+
+        <table class="table table-striped" ng-show="!isLoading>0">
+            <tr>
+                <th><span translate>franchise</span></th>
+                <th><span translate>publications</span></th>
+                <th><span translate>last_changed</span></th>
+            </tr>
+
+            <tr ng-repeat="publicationFranchise in list">
+                <td><a ng-href="#/publications/{{publicationFranchise.id}}">{{publicationFranchise.name}}</a></td>
+
+                <td>
+                    <span ng-repeat="publication in publicationFranchise.publicationList">
+                        {{ publication.name }}
+                        <span ng-show="true || publication.language">
+                            ({{ publication.language.name }})
+                            {{$last ? '' : ', '}}
+                        </span>
+                    </span>
+                </td>
+
+                <td>
+                    {{ publicationFranchise.changeTimeGui}}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+
+    <div ng-show="id">
+
+        <h3>
+            <span style="font-size: 70%;">
+                <a href="#/publications" translate>publications</a>
+                /
+            </span>
+            <span translate>franchise</span>: {{ one.name }}
+            <a href="#/publications/edit/{{one.id}}">
+                <button type="button" class="btn btn-default" translate>edit</button>
+            </a>
+        </h3>
+
+        <div><span translate>last_changed</span>: {{one.changeTimeGui}}</div>
+
+
+        <table class="table table-striped"
+               ng-repeat="publication in one.publicationList">
+            <tr>
+                <th>
+                    {{publication.name}}
+                </th>
+            </tr>
+            <tr ng-repeat="issue in publication.publicationIssueList">
+                <td>{{ issue.issueNameNumber }} / {{ issue.issueNameYear }}</td>
+            </tr>
+         </table>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" translate>revisions
+                </h3>
+            </div>
+            <div class="panel-body">
+                {{revisions}}
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+

@@ -1,0 +1,17 @@
+{
+
+    "REGIONS" : "Regionen",
+    "COUNTRIES" : "Länder",
+
+    "COUNTRY" : "Land",
+    "REGION" : "Region",
+
+    "GERMANY" : "Deutschland",
+    "UNITED_STATES" : "USA",
+    "UNITED_KINGDOM" : "England",
+    "FRANCE" : "Frankreich",
+    "JAPAN" : "Japan",
+    "CHINA" : "China",
+    "EUROPE" : "Europa",
+    "NORTH_AMERICA" : "Nordamerika"
+}

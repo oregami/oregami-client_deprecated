@@ -1,0 +1,44 @@
+
+<h3><span translate>WEBSITES</span>:</h3>
+
+
+<form novalidate class="simple-form">
+
+    <table>
+        <tr>
+            <td>
+                website.url:
+            </td>
+            <td>
+                <input size="50" type="text" ng-model="newwebsite.url">
+            </td>
+        </tr>
+        <!--
+        <tr>
+            <td>
+                website.createSize:
+            </td>
+            <td>
+                <input size="50" type="text" ng-model="newwebsite.createSize">
+            </td>
+        </tr>
+        -->
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button class="btn btn-default" ng-click="createWebsite(newwebsite);">CREATE</button>
+            </td>
+        </tr>
+
+    </table>
+
+
+</form>
+
+<button class="btn btn-default" ng-click="refreshList()">REFRESH_LIST</button>
+
+<br/>
+<span ng-repeat="website in websites">
+    <a ng-href="{{API + '' + website.href_big}}" target="_blank">
+        <img ng-src="{{API + '' + website.href_thumb}}" title="{{ website.url }} {{ website.createTime }}"/>
+    </a>
+</span>
