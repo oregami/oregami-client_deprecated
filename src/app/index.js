@@ -20,47 +20,47 @@ var app = angular.module('oregamiClientApp',
         controller: 'GamesCtrl'
       })
       .when('/persons', {
-        templateUrl: 'views/persons.html',
+        templateUrl: 'app/persons/persons.html',
         controller: 'PersonsCtrl'
       })
       .when('/companies', {
-        templateUrl: 'views/companies.html',
+        templateUrl: 'app/companies/companies.html',
         controller: 'CompaniesCtrl'
       })
       .when('/publications', {
-        templateUrl: 'views/publications.html',
+        templateUrl: 'app/publications/publications.html',
         controller: 'PublicationsCtrl'
       })
       .when('/publications/:publicationsId', {
-        templateUrl: 'views/publications.html',
+        templateUrl: 'app/publications/publications.html',
         controller: 'PublicationsCtrl'
       })
       .when('/publications/edit/:publicationsId', {
-        templateUrl: 'views/publicationsEdit.html',
+        templateUrl: 'app/publications/publicationsEdit.html',
         controller: 'PublicationeditCtrl as ctrl'
       })
       .when('/config', {
-        templateUrl: 'views/config.html',
+        templateUrl: 'app/config.html',
         controller: 'ConfigCtrl'
       })
       .when('/languages', {
-        templateUrl: 'views/languages.html',
+        templateUrl: 'app/languages/languages.html',
         controller: 'LanguagesCtrl'
       })
       .when('/regions', {
-        templateUrl: 'views/regions.html',
+        templateUrl: 'app/regions/regions.html',
         controller: 'RegionsCtrl'
       })
       .when('/gameTitles', {
-        templateUrl: 'views/gameTitles.html',
+        templateUrl: 'app/gameTitles/gameTitles.html',
         controller: 'GameTitlesCtrl'
       })
       .when('/register', {
-        templateUrl: 'views/register.html',
+        templateUrl: 'app/register/register.html',
         controller: 'RegisterCtrl'
       })
       .when('/websites', {
-        templateUrl: 'views/website.html',
+        templateUrl: 'app/website/website.html',
         controller: 'WebsiteCtrl'
       })
       .otherwise({
