@@ -4,16 +4,19 @@
 
 
 <span translate ng-show="gameTitleList">title_to_edit</span>:
-<select  class="select"
+<form class="form-inline">
+<select  class="form-control"
         ng-model="gameTitleToEdit"
         ng-options='getGameTitleForCombobox(gameTitle) for gameTitle in gameTitleList'
         ng-change='loadGameTitle(gameTitleToEdit.id)'></select>
 <hr/>
+</form>
 
 <span ng-show="gameTitle">
-<form novalidate class="simple-form">
 
-<table>
+<form novalidate class="form-inline">
+
+<table class="table table-striped">
     <tr>
         <td>
     gameTitle.id:
@@ -40,7 +43,7 @@
             gameTitle.nativeSpelling:
         </td>
         <td>
-            <input size="50"  type="text" ng-model="gameTitle.nativeSpelling">
+            <input class="form-control" size="50"  type="text" ng-model="gameTitle.nativeSpelling">
         </td>
     </tr>
 
@@ -49,7 +52,7 @@
             gameTitle.language:
         </td>
         <td>
-            <select class="select"
+            <select class="form-control"
                     ng-model="gameTitle.language.id"
                     ng-options='l.id as l.name for l in availableLanguages'></select>
         </td>
@@ -61,7 +64,7 @@
             gameTitle.standardTransliteration:
         </td>
         <td>
-            <input size="50"  type="text" ng-model="gameTitle.standardTransliteration">
+            <input class="form-control" size="50"  type="text" ng-model="gameTitle.standardTransliteration">
         </td>
     </tr>
 
