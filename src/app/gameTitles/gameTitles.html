@@ -6,7 +6,7 @@
 <span translate ng-show="gameTitleList">title_to_edit</span>:
 <select  class="select"
         ng-model="gameTitleToEdit"
-        ng-options='gameTitle.nativeSpelling + (gameTitle.standardTransliteration==null?"":" (" + gameTitle.standardTransliteration+ ")") for gameTitle in gameTitleList'
+        ng-options='getGameTitleForCombobox(gameTitle) for gameTitle in gameTitleList'
         ng-change='loadGameTitle(gameTitleToEdit.id)'></select>
 <hr/>
 

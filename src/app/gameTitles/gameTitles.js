@@ -27,14 +27,20 @@ angular.module('oregamiClientApp')
                     });
 
 
-                }
+                };
 
                 $scope.refreshList = function () {
                     $scope.gameTitleList = null;
                     $gameTitleService.getAll().then(function (list) {
                         $scope.gameTitleList = list;
                     });
-                }
+                };
+
+                $scope.getGameTitleForCombobox = function(gameTitle) {
+                  return gameTitle.nativeSpelling +
+                    (gameTitle.standardTransliteration == null ? '' : (' (' + gameTitle.standardTransliteration +  ')'))
+                    ;
+                };
 
                 $scope.refreshList();
 
