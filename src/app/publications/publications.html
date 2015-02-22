@@ -41,19 +41,10 @@
                 <a href="#/publications" translate>publications</a>
                 /
             </span>
-            <span translate>franchise</span>: {{ one.name }}
-          <span title="{{ (loggedIn ? 'edit' : 'logInFirst') | translate}}">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  ng-disabled="!loggedIn"
-                  translate
-                >
-                  <a href="#/publications/edit/{{one.id}}">
-                    edit
-                  </a>
-                </button>
-            </span>
+            <span translate>franchise</span>
+            : {{ one.name }}
+            <a ng-disabled='!loggedIn' class="btn btn-default" href="#/publications/edit/{{one.id}}" translate>edit</a>
+
         </h3>
 
         <div><span translate>last_changed</span>: {{one.changeTimeGui}}</div>
