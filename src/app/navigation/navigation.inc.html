@@ -1,37 +1,69 @@
 <span ng-controller="NavigationCtrl">
 
     <div class="header">
-        <div class="navbar navbar-default" role="navigation" bs-navbar>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#/main">oregami client</a>
-            </div>
+      <div class="navbar navbar-default" role="navigation" bs-navbar>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#/main">oregami</a>
+        </div>
 
-            <ul class="nav navbar-nav">
-                <li ng-repeat="nav in navlist" data-match-route="/{{nav.url}}">
-                    <a ng-href="#{{nav.url}}">{{nav.name | translate}} </a>
-                </li>
-                <li>
-                    <br/>
-                    <div id="navDetails">
+        <ul class="nav navbar-nav">
+          <li ng-repeat="nav in navlist" data-match-route="/{{nav.url}}">
+            <a ng-href="#{{nav.url}}">{{nav.name | translate}} </a>
+          </li>
+          <li>
+
+            <div id="navDetails">
                     <span ng-controller="LanguageCtrl">
                             <a href="" ng-class="{active:preferredLanguage != 'de'}" ng-click="changeLang('en')"><img
-                                    src="/assets/images/en.png"></a>
-
+                              src="/assets/images/en.png"></a>
                             <a href="" ng-class="{active:preferredLanguage != 'en'}" ng-click="changeLang('de')"><img
-                                    src="/assets/images/de.png"></a>
+                              src="/assets/images/de.png"></a>
                     </span>
-                    </div>
-                </li>
-            </ul>
+            </div>
+          </li>
+        </ul>
+
+
+        <div style="text-align: right;margin-right: 50px; margin-top: 10px;">
+          <span ng-controller="LoginCtrl as ctrl">
+      <form class="form-inline">
+        <span style="color:red;">{{errorMessage}}</span>
+        <span ng-show="!loggedIn">
+          <input
+            style="padding: 2px; width: 80px; height: 25px;"
+            type="text" ng-change="ctrl.clearError()" class="form-control" id="user.username"
+                 ng-model="user.username" placeholder="username">
+          <input
+            style="padding: 2px; width: 80px; height: 25px;"
+            type="password" ng-change="ctrl.clearError()" class="form-control" id="user.password"
+                 ng-model="user.password"
+                 placeholder="password">
+          <button id="button.login" class="btn btn-primary btn-sm" ng-click="ctrl.login(user)" translate>login</button>
+        </span>
+      </form>
+
+      <span style="color: blue; font-size: 8pt;" ng-show="debug">
+      loggedIn: {{loggedIn}}  ;
+      username: {{username}} ;
+      getUsername(): {{getUsername()}}
+      </span>
+
+      <span ng-show="loggedIn" id="username"><strong>{{getUsername()}}</strong></span>
+
+      <button ng-show="loggedIn" class="btn btn-danger btn-sm" ng-click="ctrl.logout()" id="button.logout" translate
+        >logout</button>
+
+    </span>
+
         </div>
-    </div>
+
+      </div>
 
 
-
-           <!--
-    <div id="API_URL" title="{{API_URL}}">API</div>
-               -->
-    <!--
-    <div id="User">{{user.isLogged}} / {{user.username}}</div>
-    -->
+      <!--
+<div id="API_URL" title="{{API_URL}}">API</div>
+          -->
+      <!--
+      <div id="User">{{user.isLogged}} / {{user.username}}</div>
+      -->
 </span>

@@ -7,7 +7,9 @@ var app = angular.module('oregamiClientApp',
     'restangular',
     'ngRoute',
     'mgcrea.ngStrap',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'LocalStorageModule',
+    'http-auth-interceptor'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -70,8 +72,9 @@ var app = angular.module('oregamiClientApp',
   })
 ;
 
-app.run(function($rootScope, Restangular) {
-  $rootScope.API = "http://test.server.oregami.org";
+app.run(function($rootScope, Restangular, localStorageService) {
+
+    $rootScope.API = "http://test.server.oregami.org";
   //$rootScope.API = "http://localhost:8080";
   //$rootScope.API = "http://192.168.59.103:8080";
   Restangular.setBaseUrl($rootScope.API);
@@ -80,19 +83,50 @@ app.run(function($rootScope, Restangular) {
     $rootScope.isLoading--;
     return response;
   });
-  $rootScope.isLoading = 0;
-  Restangular.addRequestInterceptor(function(element) {
-    $rootScope.isLoading++;
-    return element;
+
+  Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, params, httpConfig) {
+    //console.log('FRI for ' + url + ': ' + (localStorageService.get("token")==null?null:localStorageService.get("token").token));
+    if (localStorageService.get("token") != null) {
+      console.log('auth-header wird gesetzt! \n' + JSON.stringify(localStorageService.get("token")));
+      headers.authorization = "bearer " + localStorageService.get("token").token;
+    }
+    return {
+      element: element,
+      headers: headers,
+      params: params,
+      httpConfig: httpConfig
+    };
+
   });
-  Restangular.addResponseInterceptor(function(data) {
+
+  Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, params, httpConfig) {
+    //console.log('FRI for ' + url + ': ' + (localStorageService.get("token")==null?null:localStorageService.get("token").token));
+    if (localStorageService.get('token') != null) {
+      console.log('auth-header wird gesetzt! \n' + JSON.stringify(localStorageService.get('token')));
+      headers.authorization = 'bearer ' + localStorageService.get('token').token;
+    }
+    return {
+      element: element,
+      headers: headers,
+      params: params,
+      httpConfig: httpConfig
+    };
+
+  });
+  Restangular.addResponseInterceptor(function(response) {
     $rootScope.isLoading--;
     $rootScope.errordata = null;
-    return data;
+    return response;
   });
+  Restangular.setDefaultHeaders({'Content-Type': 'application/json'});
+  $rootScope.loggedIn = false;
+  if (localStorageService.get('token') != null) {
+    $rootScope.loggedIn = true;
+  }
 });
 
 app.config(function ($translateProvider, $translatePartialLoaderProvider) {
+
 
   $translatePartialLoaderProvider.addPart('main');
   $translatePartialLoaderProvider.addPart('navigation');
@@ -103,10 +137,17 @@ app.config(function ($translateProvider, $translatePartialLoaderProvider) {
   $translatePartialLoaderProvider.addPart('languages');
   $translatePartialLoaderProvider.addPart('websites');
   $translatePartialLoaderProvider.addPart('register');
+  //$translatePartialLoaderProvider.addPart('login');
 
   $translateProvider.useLoader('$translatePartialLoader', {
     urlTemplate: '/assets/language/{part}_{lang}.json'
   });
 
   $translateProvider.preferredLanguage('en');
+});
+
+
+app.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('oregami');
 });

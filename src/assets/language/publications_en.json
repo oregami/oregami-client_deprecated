@@ -10,6 +10,7 @@
     "save" : "save",
     "cancel" : "cancel",
     "issues" : "issues"    ,
+    "logInFirst" : "log in to edit",
 
     "NAME_EMPTY": "The name must not be empty",
     "FIELD_EMPTY": "This field must not be empty"

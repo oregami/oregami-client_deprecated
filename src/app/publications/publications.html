@@ -42,9 +42,18 @@
                 /
             </span>
             <span translate>franchise</span>: {{ one.name }}
-            <a href="#/publications/edit/{{one.id}}">
-                <button type="button" class="btn btn-default" translate>edit</button>
-            </a>
+          <span title="{{ (loggedIn ? 'edit' : 'logInFirst') | translate}}">
+                <button
+                  type="button"
+                  class="btn btn-default"
+                  ng-disabled="!loggedIn"
+                  translate
+                >
+                  <a href="#/publications/edit/{{one.id}}">
+                    edit
+                  </a>
+                </button>
+            </span>
         </h3>
 
         <div><span translate>last_changed</span>: {{one.changeTimeGui}}</div>

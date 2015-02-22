@@ -10,7 +10,7 @@
     "save" : "speichern",
     "cancel" : "abbrechen",
     "issues" : "Ausgaben"  ,
-
+    "logInFirst": "einloggen zum Bearbeiten",
     "NAME_EMPTY": "Der Name muss gefüllt sein.",
     "FIELD_EMPTY": "Dieses Feld muss gefüllt sein."
 }
