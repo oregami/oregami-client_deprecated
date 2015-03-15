@@ -16,6 +16,8 @@ angular.module('oregamiClientApp')
         {name: "websites", url: "websites", title: 'websites'},
         {name: "persons", url: "persons", title: 'all persons'},
         {name: "companies", url: "companies", title: 'view all companies'},
+        {name: "revisions", url: "revisions", title: 'revisions of entities'},
+
 
     ];
 

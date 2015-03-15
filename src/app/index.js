@@ -65,6 +65,10 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'app/website/website.html',
         controller: 'WebsiteCtrl'
       })
+      .when('/revisions', {
+        templateUrl: 'app/revisions/revisions.html',
+        controller: 'RevisionsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
