@@ -24,8 +24,11 @@ angular.module('oregamiClientApp')
       if (discriminator == 'PUBLICATIONFRANCHISE') {
         return 'publications';
       }
-      if (discriminator == 'REGION ') {
+      if (discriminator == 'REGION') {
         return 'region';
+      }
+      if (discriminator == 'GAME') {
+        return 'games';
       }
       return '';
     }

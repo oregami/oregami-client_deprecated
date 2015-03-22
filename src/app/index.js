@@ -21,6 +21,10 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'app/games/games.html',
         controller: 'GamesCtrl'
       })
+      .when('/games/:gamesId', {
+        templateUrl: 'app/games/games.html',
+        controller: 'GamesCtrl'
+      })
       .when('/persons', {
         templateUrl: 'app/persons/persons.html',
         controller: 'PersonsCtrl'
@@ -79,7 +83,7 @@ var app = angular.module('oregamiClientApp',
 app.run(function($rootScope, Restangular, localStorageService) {
 
     $rootScope.API = "http://test.server.oregami.org";
-  //$rootScope.API = "http://localhost:8080";
+    $rootScope.API = "http://localhost:8080";
   //$rootScope.API = "http://192.168.59.103:8080";
   Restangular.setBaseUrl($rootScope.API);
   Restangular.setErrorInterceptor(function(response, deferred, responseHandler) {

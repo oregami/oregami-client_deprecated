@@ -1,64 +1,146 @@
-
 <div class="contentContainer">
 
-<div ng-show="games"><h2 translate>games</h2>
-<div ng-repeat="game in games" class="gameContainer">
-    <!--
-    <h3 ng-show="game.gameTitleList[0].title">titles:
-        <span ng-repeat="gameTitle in game.gameTitleList">
-        {{ gameTitle.title }}
-            <span ng-show="$index<(game.gameTitleList.length-1)"> / </span>
-        </span>
+  <div ng-show="list && ! id">
 
-    </h3>
-    -->
+    <h3 translate>games</h3>
 
-    <div ng-show="game.gameToGameTitleConnectionList.length>0">
-        <span
+    <table class="table table-striped" ng-show="!isLoading>0">
+      <tr>
+        <th><span translate>original title</span></th>
+        <th><span translate>other titles</span></th>
+        <th><span translate>last_changed</span></th>
+      </tr>
+
+      <tr ng-repeat="game in list">
+        <td>
+          <a ng-href="#/games/{{game.id}}">
+            <div ng-show="game.gameToGameTitleConnectionList.length>0">
+              <span
                 ng-repeat="gameToGameTitleConnection in game.gameToGameTitleConnectionList | filter: originalTitleFilter"
                 style="font-weight: bold;"
                 title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
                 >
-            {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}{{$last ? '' : ', '}}
-        </span>
-    </div>
+                  {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}{{$last ? '' : ', '}}
+              </span>
+            </div>
+          </a>
+          releaseGroups: {{game.releaseGroupList.length}}
+        </td>
 
-    <span ng-show="game.gameToGameTitleConnectionList.length>0">&nbsp;<span translate>OTHER_TITLES</span>:
-    <span ng-repeat="gameToGameTitleConnection in filteredList = game.gameToGameTitleConnectionList | filter: notOriginalTitleFilter">
-        <span
-              title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
-         >
-            {{ gameToGameTitleConnection.gameTitle.nativeSpelling }} / {{ gameToGameTitleConnection.titleType.value}}{{$last ? '' : ', '}}
+        <td>
+          <span
+            ng-repeat="gameToGameTitleConnection in filteredList = game.gameToGameTitleConnectionList | filter: notOriginalTitleFilter">
+              <span
+                title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
+                >
+                  {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}
+                <span
+                  style="font-size: 60%;">{{ gameToGameTitleConnection.titleType.value}}{{$last ? '' : ', '}}</small>
+                  <br/>
+              </span>
+          </span>
+          </span>
+        </td>
+        <td>
+          {{ game.changeTimeGui}}
+        </td>
+      </tr>
+    </table>
 
-        </span>
-    </span>
-    </span>
+  </div>
 
-    <div>
-        type={{ 'GameEntryType.' + game.gameEntryType.value | translate}}
-        id={{ game.id }}
-        version={{ game.version }}
-    </div>
 
-    <span ng-show="game.releaseGroupList.length>0">
-    <hr style="width:200px;text-align: left; float: left;"/><br/>
-    Releases:
-    <div ng-repeat="rg in game.releaseGroupList">
-        name={{ rg.name }}, system={{ rg.system }}
-        <div ng-show="!demoContentTypeList.length"> demo content types =
-            <span ng-repeat="dct in rg.demoContentTypeList">
-               {{ dct.value }}<span ng-show="$index<(rg.demoContentTypeList.length-1)">, </span>
+  <div ng-show="id">
+
+    <h3>
+            <span style="font-size: 70%;">
+                <a href="#/games" translate>games</a>
             </span>
-        </div>
+      : {{ one.id }}
+      <!--
+      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/games/edit/{{one.id}}" translate>edit</a>
+      -->
+    </h3>
+
+    <div class="btn-group" ng-model="tabs.activeTab" bs-radio-group>
+      <label class="btn btn-default"><input class="btn btn-default" value="gametitles" type="radio">Titles</label>
+      <label class="btn btn-default"><input class="btn btn-default" value="releases" type="radio">Releases</label>
     </div>
-    </span>
 
-     <hr/>
-</div>
-</div>
+    <!-- gametitles -->
+    <table class="table table-striped" ng-show="tabs.activeTab == 'gametitles'">
+      <tr>
+        <th><span translate>title</span></th>
+        <th><span translate>standardTransliteration</span></th>
+        <th><span translate>language</span></th>
+      </tr>
+
+      <tr
+        ng-repeat="gameToGameTitleConnection in one.gameToGameTitleConnectionList | filter: originalTitleFilter"
+        >
+        <td>
+          {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}
+        </td>
+        <td>
+          {{ gameToGameTitleConnection.gameTitle.standardTransliteration }}
+        </td>
+        <td>
+          {{ gameToGameTitleConnection.gameTitle.language.name }}
+        </td>
+
+      </tr>
+    </table>
+
+    <!-- other titles -->
+    <table class="table table-striped" ng-show="tabs.activeTab == 'gametitles'">
+      <tr>
+        <th><span translate>title</span></th>
+        <th><span translate>titleType</span></th>
+        <th><span translate>language</span></th>
+      </tr>
+
+      <tr
+        ng-repeat="gameToGameTitleConnection in filteredList = one.gameToGameTitleConnectionList | filter: notOriginalTitleFilter"
+        >
+        <td>
+          {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}
+        </td>
+        <td>
+          {{ gameToGameTitleConnection.titleType.value }}
+        </td>
+        <td>
+          {{ gameToGameTitleConnection.gameTitle.language.name }}
+        </td>
+
+      </tr>
+    </table>
 
 
+    <!-- releases -->
+    <table class="table table-striped" ng-show="tabs.activeTab == 'releases'">
+      <tr>
+        <th><span translate>releaseGroup</span></th>
+        <th><span translate>name</span></th>
+        <th><span translate>system</span></th>
+      </tr>
+
+      <tr
+        ng-repeat="releaseGroup in one.releaseGroupList"
+        >
+        <td>
+          {{ releaseGroup.system }}
+        </td>
+        <td>
+          {{ releaseGroup.name }}
+        </td>
+        <td>
+          {{ releaseGroup.releaseType.value }}
+        </td>
 
 
+      </tr>
+    </table>
+
+  </div>
 
 </div>
