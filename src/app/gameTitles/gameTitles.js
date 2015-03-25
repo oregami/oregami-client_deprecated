@@ -1,52 +1,49 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-    .controller('GameTitlesCtrl',
-        ['$scope', 'Restangular', 'gameTitleService', '$translatePartialLoader',
-            function ($scope, Restangular, $gameTitleService, $translatePartialLoader) {
+    .controller('GameTitlesCtrl', ['$scope', 'gameTitleService', '$translate', '$translatePartialLoader', 'Restangular', '$routeParams',
+    function ($scope, $gameTitleService, $translate, $translatePartialLoader, Restangular, $routeParams) {
 
-                $translatePartialLoader.addPart('gameTitles');
+      $translatePartialLoader.addPart('gameTitles');
 
-                $scope.updateGameTitle = function (gameTitle) {
-                    var gameTitleEdited = Restangular.copy(gameTitle);
-                    $gameTitleService.updateGameTitle(gameTitleEdited);
-                    $scope.gameTitle = null;
-                    $scope.gameTitleToEdit = null;
-                    window.setTimeout($scope.refreshList,500);
+      $scope.id = $routeParams.gameTitleId;
+      var service = $gameTitleService;
 
 
-                };
-                $scope.saveGameTitle = function (gameTitle) {
-                    var gameTitle2 = angular.copy(gameTitle);
-                    console.log(gameTitle2);
-                    $gameTitleService.saveGameTitle(gameTitle2);
-                };
-                $scope.loadGameTitle = function (id) {
-                    $gameTitleService.loadGameTitle(id).then(function (gameTitleLoaded) {
-                        $scope.gameTitle = gameTitleLoaded;
-                    });
+      $scope.loadAll = function () {
+        $scope.list = service.getAll();
+      };
+      $scope.loadOne = function (id) {
+        $scope.loadOneWithRevision(id, null);
+      }
+
+      $scope.loadOneWithRevision = function (id, revision) {
+        $scope.revisions = service.getOneRevisionNumbers($scope.id);
+        $scope.currentRevision = revision;
+        if (revision == null) {
+          service.getOne($scope.id).then(function (t) {
+            $scope.one = t;
+          });
+        } else {
+          service.getOneWithRevision($scope.id, $scope.revision).then(function (t) {
+            $scope.one = t;
+          });
+        }
+
+      }
+
+      if ($scope.id == null) {
+        $scope.loadAll();
+      } else {
+        $scope.list = {};
+        if ($routeParams.revision != null) {
+          $scope.revision = $routeParams.revision;
+          $scope.loadOneWithRevision($scope.id, $scope.revision);
+        } else {
+          $scope.loadOne($scope.id);
+        }
+      }
 
 
-                };
-
-                $scope.refreshList = function () {
-                    $scope.gameTitleList = null;
-                    $gameTitleService.getAll().then(function (list) {
-                        $scope.gameTitleList = list;
-                    });
-                };
-
-                $scope.getGameTitleForCombobox = function(gameTitle) {
-                  return gameTitle.nativeSpelling +
-                    (gameTitle.standardTransliteration == null ? '' : (' (' + gameTitle.standardTransliteration +  ')'))
-                    ;
-                };
-
-                $scope.refreshList();
-
-                //Restangular.all("language").getList().then(function(languages) {
-                //    $scope.availableLanguages = languages;
-                //});
-                $scope.availableLanguages = Restangular.all("language").getList().$object;
-
-            }]);
+    }]
+);

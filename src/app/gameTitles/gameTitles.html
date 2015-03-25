@@ -1,83 +1,66 @@
-<p>This is the gameTitles view.</p>
+<div class="contentContainer">
 
-<hr/>
+  <h4>
+      <span ng-show="one">
+        <a href="#/gameTitles"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+        {{ one.nativeSpelling }}
+      <!--
+      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/games/edit/{{one.id}}" translate>edit</a>
+      -->
+      </span>
+    <span ng-show="list && ! id" translate>gameTitles</span>
+  </h4>
 
+  <div ng-show="list && ! id">
 
-<span translate ng-show="gameTitleList">title_to_edit</span>:
-<form class="form-inline">
-<select  class="form-control"
-        ng-model="gameTitleToEdit"
-        ng-options='getGameTitleForCombobox(gameTitle) for gameTitle in gameTitleList'
-        ng-change='loadGameTitle(gameTitleToEdit.id)'></select>
-<hr/>
-</form>
+    <table class="table table-striped" ng-show="!isLoading>0">
+      <tr>
+        <th><span translate>nativeSpelling</span></th>
+        <th><span translate>standardTransliteration</span></th>
+        <th><span translate>language</span></th>
+        <th><span translate>changeTime</span></th>
+      </tr>
 
-<span ng-show="gameTitle">
+      <tr ng-repeat="gameTitle in list | orderBy:'+nativeSpelling'">
+        <td>
+          <a ng-href="#/gameTitles/{{gameTitle.id}}">
+            {{ gameTitle.nativeSpelling }}
+          </a>
+        </td>
+        <td>
+          {{ gameTitle.standardTransliteration }}
+        </td>
+        <td>
+          {{ gameTitle.language.name }}
+        </td>
+        <td>
+          {{ gameTitle.changeTimeGui }}
+        </td>
+      </tr>
+    </table>
+  </div>
 
-<form novalidate class="form-inline">
+  <div ng-show="id">
 
-<table class="table table-striped">
+  <!-- gametitles -->
+  <table class="table table-striped">
     <tr>
-        <td>
-    gameTitle.id:
-        </td>
-        <td>
-            <!--<input type="text" ng-model="gameTitle.id">-->
-            {{ gameTitle.id }}
-        </td>
-        <td>
-        </td>
+      <th>nativeSpelling</th>
+      <td>{{ one.nativeSpelling }}</td>
+    </tr>
+    <tr>
+      <th>standardTransliteration</th>
+      <td>{{ one.standardTransliteration }}</td>
+    </tr>
+    <tr>
+      <th>language</th>
+      <td>{{ one.language.name }}</td>
     </tr>
 
-    <tr>
-        <td>
-            gameTitle.version:
-        </td>
-        <td>
-           {{ gameTitle.version }}
-        </td>
-    </tr>
+  </table>
 
-    <tr>
-        <td>
-            gameTitle.nativeSpelling:
-        </td>
-        <td>
-            <input class="form-control" size="50"  type="text" ng-model="gameTitle.nativeSpelling">
-        </td>
-    </tr>
+</div>
 
-    <tr>
-        <td>
-            gameTitle.language:
-        </td>
-        <td>
-            <select class="form-control"
-                    ng-model="gameTitle.language.id"
-                    ng-options='l.id as l.name for l in availableLanguages'></select>
-        </td>
-    </tr>
+</div>
 
 
-    <tr>
-        <td>
-            gameTitle.standardTransliteration:
-        </td>
-        <td>
-            <input class="form-control" size="50"  type="text" ng-model="gameTitle.standardTransliteration">
-        </td>
-    </tr>
-
-
-    <tr>
-        <td colspan="2">
-            <!--<button ng-click="saveGameTitle(gameTitle)">SAVE</button>-->
-            <button class="btn btn-default" type="button" ng-click="updateGameTitle(gameTitle)">UPDATE</button>
-        </td>
-    </tr>
-
-</table>
-
-
-</form>
-</span>

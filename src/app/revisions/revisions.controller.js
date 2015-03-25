@@ -30,6 +30,9 @@ angular.module('oregamiClientApp')
       if (discriminator == 'GAME') {
         return 'games';
       }
+      if (discriminator == 'GAMETITLE') {
+        return 'gameTitles';
+      }
       return '';
     }
 
