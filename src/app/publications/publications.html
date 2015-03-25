@@ -1,20 +1,30 @@
 <div class="contentContainer">
 
-    <div ng-show="list && ! id">
+  <h4>
+      <span ng-show="one">
+        <a href="#/publications"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+        {{ one.name }}
+      <!--
+      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/games/edit/{{one.id}}" translate>edit</a>
+      -->
+      </span>
+      <span ng-show="list && ! id" translate>publications</span>
+  </h4>
 
-        <h3 translate>publications</h3> <br/>
 
-        <table class="table table-striped" ng-show="!isLoading>0">
-            <tr>
-                <th><span translate>franchise</span></th>
-                <th><span translate>publications</span></th>
-                <th><span translate>last_changed</span></th>
-            </tr>
+  <div ng-show="list && ! id">
 
-            <tr ng-repeat="publicationFranchise in list">
-                <td><a ng-href="#/publications/{{publicationFranchise.id}}">{{publicationFranchise.name}}</a></td>
+    <table class="table table-striped" ng-show="!isLoading>0">
+      <tr>
+        <th><span translate>franchise</span></th>
+        <th><span translate>publications</span></th>
+        <th><span translate>last_changed</span></th>
+      </tr>
 
-                <td>
+      <tr ng-repeat="publicationFranchise in list">
+        <td><a ng-href="#/publications/{{publicationFranchise.id}}">{{publicationFranchise.name}}</a></td>
+
+        <td>
                     <span ng-repeat="publication in publicationFranchise.publicationList">
                         {{ publication.name }}
                         <span ng-show="true || publication.language">
@@ -22,58 +32,45 @@
                             {{$last ? '' : ', '}}
                         </span>
                     </span>
-                </td>
+        </td>
 
-                <td>
-                    {{ publicationFranchise.changeTimeGui}}
-                </td>
-            </tr>
-        </table>
+        <td>
+          {{ publicationFranchise.changeTimeGui}}
+        </td>
+      </tr>
+    </table>
 
-    </div>
+  </div>
 
 
+  <div ng-show="id">
 
-    <div ng-show="id">
+    <div><span translate>last_changed</span>: {{one.changeTimeGui}}</div>
 
-        <h3>
-            <span style="font-size: 70%;">
-                <a href="#/publications" translate>publications</a>
-                /
-            </span>
-            <span translate>franchise</span>
-            : {{ one.name }}
-            <a ng-disabled='!loggedIn' class="btn btn-default" href="#/publications/edit/{{one.id}}" translate>edit</a>
+    <table class="table table-striped"
+           ng-repeat="publication in one.publicationList">
+      <tr>
+        <th>
+          {{publication.name}}
+        </th>
+      </tr>
+      <tr ng-repeat="issue in publication.publicationIssueList">
+        <td>{{ issue.issueNameNumber }} / {{ issue.issueNameYear }}</td>
+      </tr>
+    </table>
 
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title" translate>revisions
         </h3>
-
-        <div><span translate>last_changed</span>: {{one.changeTimeGui}}</div>
-
-
-        <table class="table table-striped"
-               ng-repeat="publication in one.publicationList">
-            <tr>
-                <th>
-                    {{publication.name}}
-                </th>
-            </tr>
-            <tr ng-repeat="issue in publication.publicationIssueList">
-                <td>{{ issue.issueNameNumber }} / {{ issue.issueNameYear }}</td>
-            </tr>
-         </table>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title" translate>revisions
-                </h3>
-            </div>
-            <div class="panel-body">
-                {{revisions}}
-            </div>
-        </div>
-
-
+      </div>
+      <div class="panel-body">
+        {{revisions}}
+      </div>
     </div>
+
+
+  </div>
 
 </div>
 

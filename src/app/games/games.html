@@ -53,13 +53,15 @@
   <div ng-show="id">
 
     <h3>
+      <span ng-show="one">
             <span style="font-size: 70%;">
                 <a href="#/games" translate>games</a>
             </span>
-      : {{ one.id }}
+      : {{ getTitle(one) }}
       <!--
       <a ng-disabled='!loggedIn' class="btn btn-default" href="#/games/edit/{{one.id}}" translate>edit</a>
       -->
+      </span>
     </h3>
 
     <div class="btn-group" ng-model="tabs.activeTab" bs-radio-group>

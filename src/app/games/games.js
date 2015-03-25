@@ -17,17 +17,17 @@ angular.module('oregamiClientApp')
       };
 
 
-      $scope.loadAll = function() {
+      $scope.loadAll = function () {
         $scope.list = service.getAll();
       };
-      $scope.loadOne = function(id) {
+      $scope.loadOne = function (id) {
         $scope.loadOneWithRevision(id, null);
       }
 
-      $scope.loadOneWithRevision = function(id, revision) {
+      $scope.loadOneWithRevision = function (id, revision) {
         $scope.revisions = service.getOneRevisionNumbers($scope.id);
         $scope.currentRevision = revision;
-        if (revision==null) {
+        if (revision == null) {
           service.getOne($scope.id).then(function (t) {
             $scope.one = t;
           });
@@ -39,11 +39,11 @@ angular.module('oregamiClientApp')
 
       }
 
-      if ($scope.id==null) {
+      if ($scope.id == null) {
         $scope.loadAll();
       } else {
         $scope.list = {};
-        if ($routeParams.revision!=null) {
+        if ($routeParams.revision != null) {
           $scope.revision = $routeParams.revision;
           $scope.loadOneWithRevision($scope.id, $scope.revision);
         } else {
@@ -54,6 +54,10 @@ angular.module('oregamiClientApp')
 
       $scope.tabs = ["gametitles", "releases"];
       $scope.tabs.activeTab = "gametitles";
+
+      $scope.getTitle = function (game) {
+        return game.gameToGameTitleConnectionList[0].gameTitle.nativeSpelling;
+      }
 
 
     }]);
