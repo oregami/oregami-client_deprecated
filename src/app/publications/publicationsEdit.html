@@ -42,7 +42,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="publication.name">name</label>
-                        <span class="text-danger">{{ getError('publication.name', publication) | translate }}</span>
+                        <span class="error">{{ getError('publication.name', publication) | translate }}</span>
                         <div class="row">
                             <div class="col-xs-3">
                                 <input type="text" class="form-control" id="publication.name" ng-model="publication.name">
