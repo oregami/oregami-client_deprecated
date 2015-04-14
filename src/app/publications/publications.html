@@ -4,9 +4,7 @@
       <span ng-show="one">
         <a href="#/publications"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
         {{ one.name }}
-      <!--
-      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/games/edit/{{one.id}}" translate>edit</a>
-      -->
+      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/publications/edit/{{one.id}}" translate>edit</a>
       </span>
       <span ng-show="list && ! id" translate>publications</span>
   </h4>
