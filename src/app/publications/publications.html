@@ -34,7 +34,7 @@
                     <span ng-repeat="publication in publicationFranchise.publicationList">
                         {{ publication.name }}
                         <span ng-show="true || publication.language">
-                            ({{ publication.language.name }})
+                            (<span translate>{{ publication.language.name }}</span>)
                             {{$last ? '' : ', '}}
                         </span>
                     </span>
