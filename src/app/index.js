@@ -37,6 +37,10 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'app/publications/publications.html',
         controller: 'PublicationsCtrl'
       })
+      .when('/publications/new', {
+        templateUrl: 'app/publications/publicationsEdit.html',
+        controller: 'PublicationeditCtrl as ctrl'
+      })
       .when('/publications/:publicationsId', {
         templateUrl: 'app/publications/publications.html',
         controller: 'PublicationsCtrl'
@@ -83,6 +87,12 @@ var app = angular.module('oregamiClientApp',
 
   })
 ;
+
+app.factory('RestFulResponse', function(Restangular) {
+  return Restangular.withConfig(function(RestangularConfigurer) {
+    RestangularConfigurer.setFullResponse(true);
+  });
+});
 
 app.run(function($rootScope, Restangular, localStorageService) {
 

@@ -6,7 +6,15 @@
         {{ one.name }}
       <a ng-disabled='!loggedIn' class="btn btn-default" href="#/publications/edit/{{one.id}}" translate>edit</a>
       </span>
-      <span ng-show="list && ! id" translate>publications</span>
+    <span ng-show="list && ! id" translate id="publications.header">publications</span>
+
+    <span ng-show="!one" title="{{ loggedIn ? '' : 'log in first'}}">
+      <a href="#/publications/new"
+         ng-disabled="!loggedIn"
+         class="btn btn-success btn-sm"
+        >Create new publication</a>
+    </span>
+
   </h4>
 
 
@@ -52,6 +60,11 @@
           {{publication.name}}
         </th>
       </tr>
+      <tr>
+        <td>
+          language: <span translate>{{publication.language.name}}</span>
+        </td>
+      </tr>
       <tr ng-repeat="issue in publication.publicationIssueList">
         <td>{{ issue.issueNameNumber }} / {{ issue.issueNameYear }}</td>
       </tr>
@@ -63,7 +76,7 @@
         </h3>
       </div>
       <div class="panel-body">
-        {{revisions}}
+        <div ng-repeat="rev in revisions">{{rev.n}} / {{getDate(rev.value.timestamp)}}</div>
       </div>
     </div>
 
