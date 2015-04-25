@@ -16,13 +16,11 @@ angular.module('oregamiClientApp')
         {name: "persons", url: "persons"},
         {name: "companies", url: "companies"},
         {name: "last_changes", url: "revisions"},
-
-
       ];
 
       $scope.isActive = function (route) {
         return route === $location.path();
-      }
+      };
 
       $scope.$location = $location;
       $scope.$route = $route;
