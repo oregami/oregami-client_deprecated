@@ -13,12 +13,21 @@
           <li>
             <div id="navDetails">
               <span ng-controller="LanguageCtrl">
+                <a ng-repeat="lang in languages" href="" id='language_{{lang.id}}' ng-class="{active:preferredLanguage != '{{lang.id'}"
+                   ng-click="changeLang(lang.id)"
+                   title="{{lang.name | translate}}"
+                   style="padding-right: 2px;"
+                  ><img ng-src="/assets/images/{{lang.id}}.png"
+                  ></a>
+
+                <!--
                 <a href="" id='language_en' ng-class="{active:preferredLanguage != 'de'}"
                    ng-click="changeLang('en')"><img
                   src="/assets/images/en.png"></a>
                 <a href="" id='language_de' ng-class="{active:preferredLanguage != 'en'}"
                    ng-click="changeLang('de')"><img
                   src="/assets/images/de.png"></a>
+                  -->
               </span>
             </div>
           </li>
