@@ -10,7 +10,8 @@
     "save" : "speichern",
     "cancel" : "abbrechen",
     "issues" : "Ausgaben"  ,
-    "logInFirst": "einloggen zum Bearbeiten",
+    "logInFirst": "erst einloggen",
     "NAME_EMPTY": "Der Name muss gefüllt sein.",
-    "FIELD_EMPTY": "Dieses Feld muss gefüllt sein."
+    "FIELD_EMPTY": "Dieses Feld muss gefüllt sein." ,
+    "create_new_publication" : "Neue Publikation anlegen"
 }

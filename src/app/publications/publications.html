@@ -8,11 +8,12 @@
       </span>
     <span ng-show="list && ! id" translate id="publications.header">publications</span>
 
-    <span ng-show="!one" title="{{ loggedIn ? '' : 'log in first'}}">
+    <span ng-show="!one" title="{{ loggedIn ? '' : 'logInFirst' | translate}}">
       <a href="#/publications/new"
          ng-disabled="!loggedIn"
          class="btn btn-success btn-sm"
-        >Create new publication</a>
+         translate
+        >create_new_publication</a>
     </span>
 
   </h4>

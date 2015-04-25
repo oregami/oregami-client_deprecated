@@ -1,17 +1,16 @@
 {
-
-    "franchise" : "Franchise",
-    "release_date": "Release date",
-    "publication" : "Publication",
-    "publications" : "Publications",
-    "last_changed" : "last change",
-    "revisions" : "revisions",
-    "edit" : "edit",
-    "save" : "save",
-    "cancel" : "cancel",
-    "issues" : "issues"    ,
-    "logInFirst" : "log in to edit",
-
-    "NAME_EMPTY": "The name must not be empty",
-    "FIELD_EMPTY": "This field must not be empty"
+  "franchise": "Franchise",
+  "release_date": "Release date",
+  "publication": "Publication",
+  "publications": "Publications",
+  "last_changed": "last change",
+  "revisions": "revisions",
+  "edit": "edit",
+  "save": "save",
+  "cancel": "cancel",
+  "issues": "issues",
+  "logInFirst": "log in first",
+  "NAME_EMPTY": "The name must not be empty",
+  "FIELD_EMPTY": "This field must not be empty",
+  "create_new_publication": "Create new publication"
 }

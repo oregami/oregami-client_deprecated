@@ -8,8 +8,7 @@ angular.module('oregamiClientApp')
     var _this = this;
 
     $scope.publicationFranchiseId = $routeParams.publicationsId;
-    $scope.publicationFranchise = {'name': 'new name', 'id': null, 'validationId': errorService.validationId()};
-    //$scope.publicationFranchise = {};
+    $scope.publicationFranchise = {'name': '', 'id': null, 'validationId': errorService.validationId()};
 
     if ($scope.publicationFranchiseId != null) {
       publicationService.getOne($scope.publicationFranchiseId).then(function (p) {
