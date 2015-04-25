@@ -2,31 +2,30 @@
 
 angular.module('oregamiClientApp')
   .controller('NavigationCtrl',
-            ['$scope', '$location', '$route', '$translate', '$translatePartialLoader',
-    function ($scope,   $location,   $route, $translate,     $translatePartialLoader) {
+  ['$scope', '$location', '$route', '$translate', '$translatePartialLoader',
+    function ($scope, $location, $route, $translate, $translatePartialLoader) {
 
-    $translatePartialLoader.addPart('navigation');
+      $translatePartialLoader.addPart('navigation');
 
-    $scope.navlist = [
-        //{name: "home", url: "", title:"home of the site"},
-        {name: "publications", url: "publications", title: 'show publications'},
-        {name: "games", url: "games", title: "list all games"},
-        {name: "gameTitles", url: "gameTitles", title: 'gameTitles'},
-        {name: "regions", url: "regions", title: 'regions'},
-        {name: "websites", url: "websites", title: 'websites'},
-        {name: "persons", url: "persons", title: 'all persons'},
-        {name: "companies", url: "companies", title: 'view all companies'},
-        {name: "revisions", url: "revisions", title: 'revisions of entities'},
+      $scope.navlist = [
+        {name: "publications", url: "publications"},
+        {name: "games", url: "games"},
+        {name: "gameTitles", url: "gameTitles"},
+        {name: "regions", url: "regions"},
+        {name: "websites", url: "websites"},
+        {name: "persons", url: "persons"},
+        {name: "companies", url: "companies"},
+        {name: "last_changes", url: "revisions"},
 
 
-    ];
+      ];
 
-    $scope.isActive = function(route) {
+      $scope.isActive = function (route) {
         return route === $location.path();
-    }
+      }
 
-    $scope.$location = $location;
-    $scope.$route = $route;
+      $scope.$location = $location;
+      $scope.$route = $route;
 
 
-  }]);
+    }]);
