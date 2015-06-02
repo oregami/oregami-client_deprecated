@@ -52,11 +52,15 @@ angular.module('oregamiClientApp')
       }
 
 
-      $scope.tabs = ["gametitles", "releases"];
+      $scope.tabs = ["gametitles", "releases", "revisions"];
       $scope.tabs.activeTab = "gametitles";
 
       $scope.getTitle = function (game) {
         return game.gameToGameTitleConnectionList[0].gameTitle.nativeSpelling;
+      }
+
+      $scope.getDate = function (timestamp) {
+        return moment(timestamp).format('YYYY-MM-DD HH:mm');
       }
 
 
