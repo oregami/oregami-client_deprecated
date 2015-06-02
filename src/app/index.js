@@ -69,6 +69,14 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'app/gameTitles/gameTitles.html',
         controller: 'GameTitlesCtrl'
       })
+      .when('/gamingEnvironments', {
+        templateUrl: 'app/gamingEnvironments/gamingEnvironments.html',
+        controller: 'GamingEnvironmentsCtrl'
+      })
+      .when('/gamingEnvironments/:gamingEnvironmentId', {
+        templateUrl: 'app/gamingEnvironments/gamingEnvironments.html',
+        controller: 'GamingEnvironmentsCtrl'
+      })
       .when('/register', {
         templateUrl: 'app/register/register.html',
         controller: 'RegisterCtrl'
@@ -159,6 +167,7 @@ app.config(function ($translateProvider, $translatePartialLoaderProvider) {
   $translatePartialLoaderProvider.addPart('languages');
   $translatePartialLoaderProvider.addPart('websites');
   $translatePartialLoaderProvider.addPart('register');
+  $translatePartialLoaderProvider.addPart('gamingEnvironments');
   //$translatePartialLoaderProvider.addPart('login');
 
   $translateProvider.useLoader('$translatePartialLoader', {

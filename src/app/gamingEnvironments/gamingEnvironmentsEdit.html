@@ -1,0 +1,132 @@
+
+<form role="form">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span translate>franchise</span>
+                <span class="smallInfo">id={{gamingEnvironment.id}}</span>
+                &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-success" ng-click="ctrl.updateGamingEnvironments(gamingEnvironment)" translate>save</button>
+                <button class="btn btn-warning" ng-click="ctrl.goBack()" translate>cancel</button>
+
+            </h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+              <label for="publicationFranchise.name">name</label>
+              <span class="error">{{ getError('publicationFranchise.name', publicationFranchise) | translate }}</span>
+              <div class="row">
+                  <div class="col-xs-3">
+                      <input type="text" class="form-control" id="publicationFranchise.name" ng-model="publicationFranchise.name">
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="panel-heading">
+            <h3 class="panel-title" translate>publications
+            </h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="panel panel-primary" ng-repeat="publication in publicationFranchise.publicationList">
+                <div class="panel-heading">
+                    <span translate>publication</span> vid={{ publication.validationId }}
+                    <span class="smallInfo">id={{publication.id}}</span>
+                    <button class="btn btn-default btn-xs" ng-click="ctrl.removePublication(publicationFranchise, publication)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="publication.name">name</label>
+                        <span class="error">{{ getError('publication.name', publication) | translate }}</span>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <input type="text" class="form-control" id="publication.name" ng-model="publication.name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="publication.language" translate>language</label>
+                    <span class="error">{{ getError('publication.language', publication) | translate }}</span>
+                    <div class="row">
+                      <div class="col-xs-3">
+                        <select class="form-control"
+                                id="publication.language"
+                                ng-model="publication.language.id"
+                                ng-options="l.id as (l.name) | translate for l in availableLanguages"
+                          >
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- issues -->
+                <div class="panel-heading">
+                        {{publication.publicationIssueList.length}} <span translate>issues</span>
+                        <button class="btn" ng-click="showIssues = publication.id" ng-show="showIssues != publication.id">
+                            <span style="color: #000000;">show</span>
+                        </button>
+                        <button class="btn" ng-click="showIssues = null" ng-show="showIssues == publication.id">
+                            <span style="color: #000000;">hide</span>
+                        </button>
+                </div>
+
+
+                <div class="panel-body"  style="background-color: #0d3349;" ng-show="showIssues == publication.id">
+                    <div class="panel panel-primary" ng-repeat="issue in publication.publicationIssueList">
+                        <div class="panel-heading">
+                            Issue           vid={{ issue.validationId }}
+                            <span class="smallInfo">id={{issue.id}}</span>
+                            <button class="btn btn-default btn-xs" ng-click="ctrl.removeIssue(publication, issue)">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="issue.issueNameYear">number: </label>
+                                <input type="text" size="2" class="form-inline" id="issue.issueNameNumber" ng-model="issue.issueNameNumber">
+                                <span class="error">{{ getError('publicationIssue.issueNameNumber', issue) | translate }}</span>
+                                <br/>
+                                <label for="issue.issueNameYear">year: </label>
+                                <input type="text" size="5" class="form-inline" id="issue.issueNameYear" ng-model="issue.issueNameYear">
+                                <span class="error">{{ getError('publicationIssue.issueNameYear', issue) | translate }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-default btn-xs" ng-click="ctrl.addIssue(publication)">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+
+                </div>
+
+
+            </div>
+
+            <button class="btn btn-default btn-xs" ng-click="ctrl.addPublication(publicationFranchise)">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+
+        </div>
+
+        <div class="panel-footer">
+            <button class="btn btn-success" ng-click="ctrl.updatePublicationFranchise(publicationFranchise)" translate>save</button>
+            <button class="btn btn-warning" ng-click="ctrl.goBack()" translate>cancel</button>
+        </div>
+    </div>
+
+
+</form>
+
+<div id="debug">
+debug:<br/>
+{{debug}}
+</div>
+
+

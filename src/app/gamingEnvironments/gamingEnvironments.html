@@ -1,0 +1,117 @@
+<div class="contentContainer">
+
+  <h4>
+      <span ng-show="one">
+        <a href="#/gamingEnvironments"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+        {{ one.name }}
+        <!--
+      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/gamingEnvironments/edit/{{one.id}}" translate>edit</a>
+      -->
+        <span class="small">
+          <span translate>last_changed</span>: {{one.changeTimeGui}}
+        </span>
+      </span>
+    <span ng-show="list && ! id" translate id="gamingEnvironments.header">gamingEnvironments</span>
+
+    <!--
+    <span ng-show="!one" title="{{ loggedIn ? '' : 'logInFirst' | translate}}">
+      <a href="#/gamingEnvironments/new"
+         ng-disabled="!loggedIn"
+         class="btn btn-success btn-sm"
+         translate
+        >create_new_gamingEnvironment</a>
+    </span>
+    -->
+
+  </h4>
+
+
+  <div ng-show="list && ! id">
+
+    <table class="table table-striped" ng-show="!isLoading>0">
+      <tr>
+        <th><span translate>titles</span></th>
+        <th><span translate>last_changed</span></th>
+      </tr>
+
+      <tr ng-repeat="gamingEnvironment in list">
+        <td>
+
+            <span ng-repeat="title in gamingEnvironment.title"
+                  title="{{title.region.name}}"
+              >
+              <a ng-href="#/gamingEnvironments/{{gamingEnvironment.id}}">
+                {{ title.text.text}}</a>{{$last ? '' : ' / '}}
+            </span>
+
+        </td>
+
+        <td>
+          {{gamingEnvironment.changeTimeGui}}
+
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+
+  <div ng-show="id">
+
+    <div class="btn-group" ng-model="tabs.activeTab" bs-radio-group>
+      <label ng-repeat="tab in tabs" class="btn btn-default"><input class="btn btn-default" value="{{tab}}" type="radio">{{tab}}</label>
+    </div>
+
+
+    <!-- titles -->
+    <table class="table table-striped"
+           ng-repeat="title in one.title"
+           ng-show="tabs.activeTab == 'titles'"
+      >
+      <tr>
+        <th>
+          {{title.text.text}}
+        </th>
+      </tr>
+      <tr>
+        <td>
+          region: <span translate>{{title.region.name}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          language: <span translate>{{title.text.language.name}}</span>
+        </td>
+      </tr>
+    </table>
+
+
+    <!-- models -->
+    <table class="table table-striped"
+           ng-show="tabs.activeTab == 'models'">
+      <tr>
+        <th>
+          MODELS
+        </th>
+      </tr>
+    </table>
+
+
+    <br/>
+
+    <!-- revisions -->
+    <div class="panel panel-default" ng-show="tabs.activeTab == 'revisions'">
+      <div class="panel-heading">
+        <h3 class="panel-title" translate>revisions
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div ng-repeat="rev in revisions">{{rev.n}} / {{getDate(rev.value.timestamp)}}</div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
