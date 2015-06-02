@@ -5,6 +5,9 @@
         <a href="#/publications"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
         {{ one.name }}
       <a ng-disabled='!loggedIn' class="btn btn-default" href="#/publications/edit/{{one.id}}" translate>edit</a>
+        <span class="small">
+          <span translate>last_changed</span>: {{one.changeTimeGui}}
+        </span>
       </span>
     <span ng-show="list && ! id" translate id="publications.header">publications</span>
 
@@ -50,12 +53,16 @@
   </div>
 
 
-  <div ng-show="id">
+  <div ng-show="one">
 
-    <div><span translate>last_changed</span>: {{one.changeTimeGui}}</div>
+    <div class="btn-group" ng-model="tabs.activeTab" bs-radio-group>
+      <label ng-repeat="tab in tabs" class="btn btn-default"><input class="btn btn-default" value="{{tab}}" type="radio">{{tab}}</label>
+    </div>
 
+    <!-- publications -->
     <table class="table table-striped"
-           ng-repeat="publication in one.publicationList">
+           ng-repeat="publication in one.publicationList"
+           ng-show="tabs.activeTab == 'publications'">
       <tr>
         <th>
           {{publication.name}}
@@ -71,7 +78,9 @@
       </tr>
     </table>
 
-    <div class="panel panel-default">
+
+    <!-- revisions -->
+    <div class="panel panel-default" ng-show="tabs.activeTab == 'revisions'">
       <div class="panel-heading">
         <h3 class="panel-title" translate>revisions
         </h3>

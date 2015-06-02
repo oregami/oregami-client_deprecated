@@ -53,5 +53,7 @@ angular.module('oregamiClientApp')
         return moment(timestamp).format('YYYY-MM-DD HH:mm');
       }
 
+      $scope.tabs = ["publications", "revisions"];
+      $scope.tabs.activeTab = "publications";
 
     }]);
