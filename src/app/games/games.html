@@ -65,8 +65,7 @@
     </h3>
 
     <div class="btn-group" ng-model="tabs.activeTab" bs-radio-group>
-      <label class="btn btn-default"><input class="btn btn-default" value="gametitles" type="radio">Titles</label>
-      <label class="btn btn-default"><input class="btn btn-default" value="releases" type="radio">Releases</label>
+      <label ng-repeat="tab in tabs" class="btn btn-default"><input class="btn btn-default" value="{{tab}}" type="radio">{{tab}}</label>
     </div>
 
     <!-- gametitles -->
@@ -138,10 +137,21 @@
         <td>
           {{ releaseGroup.releaseType.value }}
         </td>
-
-
       </tr>
     </table>
+
+
+    <!-- revisions -->
+    <div class="panel panel-default" ng-show="tabs.activeTab == 'revisions'">
+      <div class="panel-heading">
+        <h3 class="panel-title" translate>revisions
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div ng-repeat="rev in revisions">{{rev.n}} / {{getDate(rev.value.timestamp)}}</div>
+      </div>
+    </div>
+
 
   </div>
 
