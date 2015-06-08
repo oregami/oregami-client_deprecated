@@ -129,7 +129,9 @@
         ng-repeat="releaseGroup in one.releaseGroupList"
         >
         <td>
-          {{ releaseGroup.system }}
+          <span ng-repeat="gamingEnvironmentTitle in releaseGroup.gamingEnvironment.title">
+            {{gamingEnvironmentTitle.text.text}}{{$last ? '' : ', '}}
+          </span>
         </td>
         <td>
           {{ releaseGroup.name }}
