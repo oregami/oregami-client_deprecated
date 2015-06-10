@@ -17,7 +17,8 @@ angular.module('oregamiClientApp')
              }
              ,
              getOne: function(id) {
-                 return Restangular.one(url, id).get();
+               console.log("id: " + JSON.stringify(id));
+               return Restangular.one(url, id).get();
              }
              ,
              getOneRevisionNumbers: function(taskId) {

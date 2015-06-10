@@ -52,16 +52,31 @@ angular.module('oregamiClientApp')
       }
 
 
-      $scope.tabs = ["gametitles", "releases", "revisions"];
-      $scope.tabs.activeTab = "gametitles";
+      $scope.tabs = ["releases", "gametitles", "revisions"];
+      $scope.tabs.activeTab = "releases";
 
       $scope.getTitle = function (game) {
-        return game.gameToGameTitleConnectionList[0].gameTitle.nativeSpelling;
+        if (game == null) {
+          return "";
+        }
+        for (var i=0; i<game.gameToGameTitleConnectionList.length; i++) {
+          var thisTitleType = game.gameToGameTitleConnectionList[i].titleType;
+          if (thisTitleType.value == 'ORIGINAL_TITLE') {
+            return game.gameToGameTitleConnectionList[i].gameTitle;
+          }
+        }
+        return game.gameToGameTitleConnectionList[0].gameTitle;
       }
 
       $scope.getDate = function (timestamp) {
         return moment(timestamp).format('YYYY-MM-DD HH:mm');
       }
+
+      $scope.showAlert = function () {
+        alert('showAlert');
+      }
+
+
 
 
     }]);

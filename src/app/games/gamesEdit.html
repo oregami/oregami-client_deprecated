@@ -1,0 +1,180 @@
+<form role="form">
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span translate>game</span>
+        <span class="smallInfo">id={{one.id}}</span>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-success" ng-click="ctrl.updateGame(one)" translate>save</button>
+        <button class="btn btn-warning" ng-click="ctrl.goBack()" translate>cancel</button>
+
+      </h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="one.gameEntryType">gameEntryType</label>
+        <span class="error">{{ getError('one.gameEntryType', one) | translate }}</span>
+
+        <div class="row">
+          <div class="col-xs-3">
+            <select class="form-control"
+                    id="one.gameEntryType"
+                    ng-model="one.gameEntryType.id"
+                    ng-options="x.id as (x.value) | translate for x in availableGameEntryTypes"
+              >
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+	  <div class="panel-body">
+		<div class="form-group">
+			<label for="game.name">name</label>
+			<span class="error">{{ getError('game.name', game) | translate }}</span>
+			<div class="row">
+				<div class="col-xs-3">
+					<input type="text" class="form-control" id="game.name" ng-model="game.name">
+				</div>
+			</div>
+		</div>
+	  </div>
+	  -->
+
+    <!-- ========================   releaseGroups ===================== -->
+    <div class="panel-heading">
+      <h3 class="panel-title" translate>releaseGroups</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="panel panel-primary" ng-repeat="releaseGroup in one.releaseGroupList">
+        <div class="panel-heading">
+          <span translate>releaseGroup</span> vid={{ releaseGroup.validationId }}
+          <span class="smallInfo">id={{releaseGroup.id}}</span>
+          <button class="btn btn-default btn-xs" ng-click="ctrl.removeReleaseGroup(one, releaseGroup)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </div>
+
+        <div class="panel-body">
+
+
+          <div class="form-group">
+            <label for="one.gameEntryType">releaseGroupReason</label>
+            <span class="error">{{ getError('releaseGroup.releaseGroupReason', releaseGroup) | translate }}</span>
+
+            <div class="row">
+              <div class="col-xs-3">
+                <select class="form-control"
+                        id="releaseGroup.releaseGroupReason"
+                        ng-model="releaseGroup.releaseGroupReason.id"
+                        ng-options="x.id as (x.value) for x in availableReleaseGroupReasons"
+                  >
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="one.gameEntryType">gamingEnvironment</label>
+            <span class="error">{{ getError('releaseGroup.gamingEnvironment', releaseGroup) | translate }}</span>
+
+            <div class="row">
+              <div class="col-xs-3">
+                <select class="form-control"
+                        id="releaseGroup.gamingEnvironment"
+                        ng-model="releaseGroup.gamingEnvironment.id"
+                        ng-options="x.id as (getTitlesFromGamingEnvironment(x)) for x in availableGamingEnvironments"
+                  >
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="releaseGroup.name">name</label>
+            <span class="error">{{ getError('releaseGroup.name', releaseGroup) | translate }}</span>
+
+            <div class="row">
+              <div class="col-xs-3">
+                <input type="text" class="form-control" id="releaseGroup.name" ng-model="releaseGroup.name">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="btn btn-default btn-xs" ng-click="ctrl.addReleaseGroup(one)">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+
+
+    </div>
+
+
+
+    <!-- ========================   gameTitles ===================== -->
+    <div class="panel-heading">
+      <h3 class="panel-title" translate>gameTitles</h3>
+    </div>
+
+    <div class="panel-body">
+
+      <div class="panel panel-primary" ng-repeat="titleConnection in one.gameToGameTitleConnectionList">
+        <div class="panel-heading">
+          <span translate>titleConnection</span>
+          <span class="smallInfo">id={{titleConnection.id}}</span>
+          <!--
+          <button class="btn btn-default btn-xs" ng-click="ctrl.removeReleaseGroup(one, releaseGroup)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+          -->
+        </div>
+
+        <div class="panel-body">
+          <div class="form-group">
+            <div>
+              <label>title</label>
+              <div class="row">
+                <div class="col-xs-3">
+                  <input class="form-control" size="80" readonly="readonly" disabled="disabled" value="{{titleConnection.gameTitle.nativeSpelling}}"/>
+                </div>
+              </div>
+            </div>
+            <div ng-show="titleConnection.gameTitle.standardTransliteration">
+              <label>standardTransliteration</label>
+              <div class="row">
+                <div class="col-xs-3">
+                  <input class="form-control" size="80" readonly="readonly" disabled="disabled" value="{{titleConnection.gameTitle.standardTransliteration}}"/>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="panel-footer">
+      <button class="btn btn-success" ng-click="ctrl.updateGame(one)" translate>save</button>
+      <button class="btn btn-warning" ng-click="ctrl.goBack()" translate>cancel</button>
+    </div>
+  </div>
+
+
+</form>
+
+<div id="debug">
+  debug:<br/>
+  {{debug}}
+</div>
+
+
