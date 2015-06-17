@@ -1,34 +1,38 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .service('gamesService', ['Restangular',
+  .service('gamesService', ['Restangular', 'RestFulResponse',
 
-     function gamesService(Restangular) {
+    function gamesService(Restangular, RestFulResponse) {
 
-         var url = 'games';
+      var url = 'games';
 
-         return {
-             getAll: function() {
-                 return Restangular.all(url).getList().$object;
-             },
-             updateOne: function(task) {
-                 var ret = task.put();
-                 return ret;
-             }
-             ,
-             getOne: function(id) {
-               console.log("id: " + JSON.stringify(id));
-               return Restangular.one(url, id).get();
-             }
-             ,
-             getOneRevisionNumbers: function(taskId) {
-                 return Restangular.all(url + '/' +  taskId + "/revisions").getList().$object;
-             }
-             ,
-             getOneWithRevision: function(taskId, revision) {
-                 return Restangular.one(url + '/' +  taskId + "/revisions/" + revision).get();
-             }
+      return {
+        getAll: function () {
+          return Restangular.all(url).getList().$object;
+        },
+        updateOne: function (entity) {
+          if (typeof entity.id == 'undefined' || entity.id === null) {
+            return RestFulResponse.all(url).post(entity).then(function (response) {
+              return response;
+            });
+          }
+          var ret = entity.put();
+          return ret;
+        }
+        ,
+        getOne: function (id) {
+          return Restangular.one(url, id).get();
+        }
+        ,
+        getOneRevisionNumbers: function (entityId) {
+          return Restangular.all(url + '/' + entityId + "/revisions").getList().$object;
+        }
+        ,
+        getOneWithRevision: function (entityId, revision) {
+          return Restangular.one(url + '/' + entityId + "/revisions/" + revision).get();
+        }
 
-         }
+      }
 
-  }]);
+    }]);

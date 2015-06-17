@@ -1,8 +1,41 @@
 <div class="contentContainer">
 
+  <h4>
+      <span ng-show="one">
+        <a href="#/games"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+        {{ getTitle(one).nativeSpelling }}
+      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/games/edit/{{one.id}}" translate>edit</a>
+        <span class="small">
+          <span translate>last_changed</span>: {{one.changeTimeGui}}
+        </span>
+      </span>
+      <span ng-show="list && ! id" translate id="games.header">games</span>
+
+    <span ng-show="!one" title="{{ loggedIn ? '' : 'logInFirst' | translate}}">
+      <a href="#/games/new"
+         ng-disabled="!loggedIn"
+         class="btn btn-success btn-sm"
+         translate
+        >create_new_game</a>
+    </span>
+
+  </h4>
+
   <div ng-show="list && ! id">
 
+    <!--
     <h3 translate>games</h3>
+     <span ng-show="!one" title="{{ loggedIn ? '' : 'logInFirst' | translate}}">
+      <a href="#/games/new"
+         ng-disabled="!loggedIn"
+         class="btn btn-success btn-sm"
+         translate
+        >create_new_game</a>
+    </span>
+    -->
+
+
+
 
     <table class="table table-striped" ng-show="!isLoading>0">
       <tr>
@@ -14,33 +47,19 @@
       <tr ng-repeat="game in list">
         <td>
           <a ng-href="#/games/{{game.id}}">
-            <div ng-show="game.gameToGameTitleConnectionList.length>0">
+            <div ng-show="game.gameTitleList.length>0">
               <span
-                ng-repeat="gameToGameTitleConnection in game.gameToGameTitleConnectionList | filter: originalTitleFilter"
+                ng-repeat="gameTitle in game.gameTitleList"
                 style="font-weight: bold;"
-                title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
+                title="{{gameTitle.text.text}}"
                 >
-                  {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}{{$last ? '' : ', '}}
+                  {{ gameTitle.text.text }}{{$last ? '' : ', '}}
               </span>
             </div>
           </a>
           releaseGroups: {{game.releaseGroupList.length}}
         </td>
 
-        <td>
-          <span
-            ng-repeat="gameToGameTitleConnection in filteredList = game.gameToGameTitleConnectionList | filter: notOriginalTitleFilter">
-              <span
-                title="{{ (gameToGameTitleConnection.gameTitle.standardTransliteration!=''?gameToGameTitleConnection.gameTitle.standardTransliteration:'')}}"
-                >
-                  {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}
-                <span
-                  style="font-size: 60%;">{{ gameToGameTitleConnection.titleType.value}}{{$last ? '' : ', '}}</small>
-                  <br/>
-              </span>
-          </span>
-          </span>
-        </td>
         <td>
           {{ game.changeTimeGui}}
         </td>
@@ -50,17 +69,7 @@
   </div>
 
 
-  <div ng-show="id">
-
-    <h3>
-      <span ng-show="id">
-            <a href="#/games"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
-      {{ getTitle(one).nativeSpelling }}
-
-      <a ng-disabled='!loggedIn' class="btn btn-default" href="#/games/edit/{{one.id}}" translate>edit</a>
-
-      </span>
-    </h3>
+  <div ng-show="one">
 
     <h5>type: {{one.gameEntryType.value}}</h5>
 
@@ -72,21 +81,17 @@
     <table class="table table-striped" ng-show="tabs.activeTab == 'gametitles'">
       <tr>
         <th><span translate>title (type: original)</span></th>
-        <th><span translate>standardTransliteration</span></th>
         <th><span translate>language</span></th>
       </tr>
 
       <tr
-        ng-repeat="gameToGameTitleConnection in one.gameToGameTitleConnectionList | filter: originalTitleFilter"
+        ng-repeat="gameTitle in one.gameTitleList | filter: originalTitleFilter"
         >
         <td>
-          {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}
+          {{ gameTitle.text.text }}
         </td>
         <td>
-          {{ gameToGameTitleConnection.gameTitle.standardTransliteration }}
-        </td>
-        <td>
-          {{ gameToGameTitleConnection.gameTitle.language.name }}
+          {{ gameTitle.text.language.name }}
         </td>
 
       </tr>
@@ -101,16 +106,16 @@
       </tr>
 
       <tr
-        ng-repeat="gameToGameTitleConnection in filteredList = one.gameToGameTitleConnectionList | filter: notOriginalTitleFilter"
+        ng-repeat="gameTitle in one.gameTitleList | filter: notOriginalTitleFilter"
         >
         <td>
-          {{ gameToGameTitleConnection.gameTitle.nativeSpelling }}
+          {{ gameTitle.text.text }}
         </td>
         <td>
-          {{ gameToGameTitleConnection.titleType.value }}
+          {{ gameTitle.titleType.value }}
         </td>
         <td>
-          {{ gameToGameTitleConnection.gameTitle.language.name }}
+          {{ gameTitle.text.language.name }}
         </td>
 
       </tr>

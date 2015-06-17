@@ -8,17 +8,17 @@ angular.module('oregamiClientApp')
     var _this = this;
 
     $scope.gamesId = $routeParams.gamesId;
+    $scope.one = {
+      'name': '', 'id': null, 'validationId': errorService.validationId()
+      , releaseGroupList: []
+      , gameTitleList: []
+    };
 
-
-    //if ($scope.gamesId == null) {
-      $scope.one = {'id': null, 'validationId': errorService.validationId()};
-    //}
-    //else {
-      gamesService.getOne($scope.gamesId).then(function (entity) {
-        $scope.one = entity;
+    if ($scope.gamesId != null) {
+      gamesService.getOne($scope.gamesId).then(function (p) {
+        $scope.one = p;
       });
-    //}
-
+    }
 
     this.updateGame = function (game) {
       gamesService.updateOne(game).then(function (ret) {
@@ -59,6 +59,25 @@ angular.module('oregamiClientApp')
       }
     };
 
+    this.addGameTitle = function (game) {
+      game.gameTitleList.push(
+        {
+          validationId: errorService.validationId(),
+          text: {
+            text : ""
+          }
+        });
+    };
+
+    this.removeGameTitle = function (game, gameTitle) {
+      for (var i = 0; i < game.gameTitleList.length; i++) {
+        if (game.gameTitleList[i] == gameTitle) {
+          game.gameTitleList.splice(i, 1);
+        }
+      }
+    };
+
+
     $scope.getError = function (fieldName, entity) {
       return errorService.getError($scope.errordata, fieldName, entity);
     }
@@ -68,9 +87,9 @@ angular.module('oregamiClientApp')
         return "";
       }
       var title = "";
-      for (var i=0; i<gamingEnvironment.title.length; i++) {
-        if (i>0) {
-          title += " / " ;
+      for (var i = 0; i < gamingEnvironment.title.length; i++) {
+        if (i > 0) {
+          title += " / ";
         }
         title += gamingEnvironment.title[i].text.text;
       }
@@ -79,7 +98,8 @@ angular.module('oregamiClientApp')
 
     $scope.availableLanguages = Restangular.all('language').getList().$object;
     $scope.availableGameEntryTypes = Restangular.all('gameEntryTypes').getList().$object;
-    $scope.availableGamingEnvironments= Restangular.all('gamingEnvironments').getList().$object;
-    $scope.availableReleaseGroupReasons= Restangular.all('releaseGroupReasons').getList().$object;
+    $scope.availableGamingEnvironments = Restangular.all('gamingEnvironments').getList().$object;
+    $scope.availableReleaseGroupReasons = Restangular.all('releaseGroupReasons').getList().$object;
+    $scope.availableTitleTypes = Restangular.all('titleTypes').getList().$object;
 
   });

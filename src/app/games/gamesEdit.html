@@ -115,7 +115,6 @@
     </div>
 
 
-
     <!-- ========================   gameTitles ===================== -->
     <div class="panel-heading">
       <h3 class="panel-title" translate>gameTitles</h3>
@@ -123,45 +122,65 @@
 
     <div class="panel-body">
 
-      <div class="panel panel-primary" ng-repeat="titleConnection in one.gameToGameTitleConnectionList">
+      <div class="panel panel-primary" ng-repeat="gameTitle in one.gameTitleList">
         <div class="panel-heading">
-          <span translate>titleConnection</span>
-          <span class="smallInfo">id={{titleConnection.id}}</span>
-          <!--
-          <button class="btn btn-default btn-xs" ng-click="ctrl.removeReleaseGroup(one, releaseGroup)">
+          <span translate>gameTitle</span>
+          <span class="smallInfo">id={{gameTitle.id}}</span>
+          <button class="btn btn-default btn-xs" ng-click="ctrl.removeGameTitle(one, gameTitle)">
             <span class="glyphicon glyphicon-remove"></span>
           </button>
-          -->
         </div>
 
         <div class="panel-body">
+
           <div class="form-group">
-            <div>
-              <label>title</label>
-              <div class="row">
-                <div class="col-xs-3">
-                  <input class="form-control" size="80" readonly="readonly" disabled="disabled" value="{{titleConnection.gameTitle.nativeSpelling}}"/>
-                </div>
+
+            <label for="one.gameEntryType">titleType</label>
+            <span class="error">{{ getError('gameTitle.titleType', gameTitle) | translate }}</span>
+            <div class="row">
+              <div class="col-xs-3">
+                <select class="form-control"
+                        id="gameTitle.titleType"
+                        ng-model="gameTitle.titleType.id"
+                        ng-options="x.id as (x.value) for x in availableTitleTypes"
+                  >
+                </select>
               </div>
             </div>
-            <div ng-show="titleConnection.gameTitle.standardTransliteration">
-              <label>standardTransliteration</label>
-              <div class="row">
+
+            <label>text</label>
+            <span class="error">{{ getError('gameTitle.text.text', gameTitle) | translate }}</span>
+            <div class="row">
                 <div class="col-xs-3">
-                  <input class="form-control" size="80" readonly="readonly" disabled="disabled" value="{{titleConnection.gameTitle.standardTransliteration}}"/>
+                  <input class="form-control" size="80" ng-model="gameTitle.text.text"/>
                 </div>
+            </div>
+
+            <label for="gameTitle.text.language">language</label>
+            <span class="error">{{ getError('gameTitle.text.language', gameTitle) | translate }}</span>
+            <div class="row">
+              <div class="col-xs-3">
+                <select class="form-control"
+                        id="gameTitle.text.language"
+                        ng-model="gameTitle.text.language.id"
+                        ng-options="x.id as (x.name) for x in availableLanguages"
+                  >
+                </select>
               </div>
             </div>
+
+
 
           </div>
         </div>
 
+        </div>
 
-      </div>
-
+        <button class="btn btn-default btn-xs" ng-click="ctrl.addGameTitle(one)">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
 
     </div>
-
 
     <div class="panel-footer">
       <button class="btn btn-success" ng-click="ctrl.updateGame(one)" translate>save</button>
@@ -174,7 +193,7 @@
 
 <div id="debug">
   debug:<br/>
-  {{debug}}
+  {{one}}
 </div>
 
 

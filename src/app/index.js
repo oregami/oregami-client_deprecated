@@ -21,6 +21,10 @@ var app = angular.module('oregamiClientApp',
         templateUrl: 'app/games/games.html',
         controller: 'GamesCtrl'
       })
+      .when('/games/new', {
+        templateUrl: 'app/games/gamesEdit.html',
+        controller: 'GamesEditCtrl as ctrl'
+      })
       .when('/games/:gamesId', {
         templateUrl: 'app/games/games.html',
         controller: 'GamesCtrl'

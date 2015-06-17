@@ -9,11 +9,11 @@ angular.module('oregamiClientApp')
       $scope.id = $routeParams.gamesId;
       var service = $gamesService;
 
-      $scope.originalTitleFilter = function (gameToGameTitleConnection) {
-        return gameToGameTitleConnection.titleType.value == 'ORIGINAL_TITLE';
+      $scope.originalTitleFilter = function (gameTitle) {
+        return gameTitle.titleType.value == 'ORIGINAL_TITLE';
       };
-      $scope.notOriginalTitleFilter = function (gameToGameTitleConnection) {
-        return !$scope.originalTitleFilter(gameToGameTitleConnection);
+      $scope.notOriginalTitleFilter = function (gameTitle) {
+        return !$scope.originalTitleFilter(gameTitle);
       };
 
 
@@ -56,7 +56,8 @@ angular.module('oregamiClientApp')
       $scope.tabs.activeTab = "releases";
 
       $scope.getTitle = function (game) {
-        if (game == null) {
+        if (game == null || game.gameToGameTitleConnectionList == null
+        || typeof game.gameToGameTitleConnectionList == 'undefined') {
           return "";
         }
         for (var i=0; i<game.gameToGameTitleConnectionList.length; i++) {

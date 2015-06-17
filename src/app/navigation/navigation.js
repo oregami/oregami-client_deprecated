@@ -11,7 +11,6 @@ angular.module('oregamiClientApp')
         {name: "publications", url: "publications"},
         {name: "gamingEnvironments", url: "gamingEnvironments"},
         {name: "games", url: "games"},
-        {name: "gameTitles", url: "gameTitles"},
         {name: "regions", url: "regions"},
         {name: "websites", url: "websites"},
         //{name: "persons", url: "persons"},
