@@ -9,8 +9,8 @@ angular.module('oregamiClientApp')
 
       $scope.navlist = [
         {name: "publications", url: "publications"},
-        {name: "gamingEnvironments", url: "gamingEnvironments"},
         {name: "games", url: "games"},
+        {name: "gamingEnvironments", url: "gamingEnvironments"},
         {name: "regions", url: "regions"},
         {name: "websites", url: "websites"},
         //{name: "persons", url: "persons"},
