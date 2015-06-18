@@ -46,8 +46,13 @@
 
       <tr ng-repeat="game in list">
         <td>
+          <a ng-href="#/games/{{game.id}}"
+             class="btn btn-default btn-xs"
+            >
+            <span class="glyphicon glyphicon-eye-open" title="show_game"></span>
+          </a>
           <a ng-href="#/games/{{game.id}}">
-            <div ng-show="game.gameTitleList.length>0">
+            <span ng-show="game.gameTitleList.length>0">
               <span
                 ng-repeat="gameTitle in game.gameTitleList | filter: originalTitleFilter"
                 style="font-weight: bold;"
@@ -55,8 +60,9 @@
                 >
                   {{ gameTitle.text.text }}{{$last ? '' : ', '}}
               </span>
-            </div>
+            </span>
           </a>
+          <br/>
           releaseGroups: {{game.releaseGroupList.length}}
         </td>
 

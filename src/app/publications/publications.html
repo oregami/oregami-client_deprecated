@@ -32,7 +32,14 @@
       </tr>
 
       <tr ng-repeat="publicationFranchise in list">
-        <td><a ng-href="#/publications/{{publicationFranchise.id}}">{{publicationFranchise.name}}</a></td>
+
+        <td>
+          <a ng-href="#/publications/{{publicationFranchise.id}}"
+             class="btn btn-default btn-xs"
+            >
+            <span class="glyphicon glyphicon-eye-open" title="show_franchise"></span>
+          </a>
+          <a ng-href="#/publications/{{publicationFranchise.id}}">{{publicationFranchise.name}}</a></td>
 
         <td>
                     <span ng-repeat="publication in publicationFranchise.publicationList">

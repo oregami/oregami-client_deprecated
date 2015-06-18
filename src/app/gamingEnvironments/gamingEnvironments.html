@@ -36,7 +36,11 @@
 
       <tr ng-repeat="gamingEnvironment in list">
         <td>
-
+          <a ng-href="#/gamingEnvironments/{{gamingEnvironment.id}}"
+             class="btn btn-default btn-xs"
+            >
+            <span class="glyphicon glyphicon-eye-open" title="show_gamingEnvironment"></span>
+          </a>
             <span ng-repeat="title in gamingEnvironment.title"
                   title="{{title.region.name}}"
               >
@@ -59,7 +63,8 @@
   <div ng-show="id">
 
     <div class="btn-group" ng-model="tabs.activeTab" bs-radio-group>
-      <label ng-repeat="tab in tabs" class="btn btn-default"><input class="btn btn-default" value="{{tab}}" type="radio">{{tab}}</label>
+      <label ng-repeat="tab in tabs" class="btn btn-default"><input class="btn btn-default" value="{{tab}}"
+                                                                    type="radio">{{tab}}</label>
     </div>
 
 
