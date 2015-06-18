@@ -11,15 +11,15 @@ angular.module('oregamiClientApp')
         getAll: function () {
           return Restangular.all(url).getList().$object;
         },
-        updateOne: function (pf) {
-          console.log('updateOne: id=' + JSON.stringify(pf.id));
-          if (typeof pf.id == 'undefined' || pf.id === null) {
-            return RestFulResponse.all(url).post(pf).then(function (response) {
+        updateOne: function (entity) {
+          console.log('updateOne: id=' + JSON.stringify(entity.id));
+          if (typeof entity.id == 'undefined' || entity.id === null) {
+            return RestFulResponse.all(url).post(entity).then(function (response) {
               console.log(JSON.stringify(response.headers));
               return response;
             });
           }
-          var ret = pf.put();
+          var ret = entity.put();
           return ret;
         }
         ,

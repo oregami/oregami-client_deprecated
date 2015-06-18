@@ -17,9 +17,9 @@ angular.module('oregamiClientApp')
     }
 
 
-    this.updatePublicationFranchise = function (publicationFranchise) {
+    this.updateEntity = function (publicationFranchise) {
       console.log(JSON.stringify(publicationFranchise));
-      publicationService.updateOne(publicationFranchise).then(function (ret) {
+      gamingEnvironmentsService.updateOne(publicationFranchise).then(function (ret) {
         var url = null;
         if (ret.headers) {
           url = ret.headers('Location');
