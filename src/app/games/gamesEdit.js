@@ -97,9 +97,9 @@ angular.module('oregamiClientApp')
     }
 
     $scope.availableLanguages = Restangular.all('language').getList().$object;
-    $scope.availableGameEntryTypes = Restangular.all('gameEntryTypes').getList().$object;
+    $scope.availableGameEntryTypes = Restangular.all('datalist/gameEntryTypes').getList().$object;
     $scope.availableGamingEnvironments = Restangular.all('gamingEnvironments').getList().$object;
-    $scope.availableReleaseGroupReasons = Restangular.all('releaseGroupReasons').getList().$object;
-    $scope.availableTitleTypes = Restangular.all('titleTypes').getList().$object;
+    $scope.availableReleaseGroupReasons = Restangular.all('datalist/releaseGroupReasons').getList().$object;
+    $scope.availableTitleTypes = Restangular.all('datalist/titleTypes').getList().$object;
 
   });
