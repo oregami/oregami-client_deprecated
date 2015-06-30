@@ -8,9 +8,7 @@
  * Controller of the angularjsRestClientApp
  */
 angular.module('oregamiClientApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, loginService, localStorageService, $modal, authService, $translatePartialLoader) {
-
-    console.log('LoginCtrl started');
+  .controller('LoginCtrl', function ($scope, $rootScope, loginService, localStorageService, $modal, authService, $translatePartialLoader, $log) {
 
     $translatePartialLoader.addPart('login');
 
@@ -29,7 +27,6 @@ angular.module('oregamiClientApp')
     $scope.username = localStorageService.get('username');
 
     this.login = function (user) {
-      console.log('LoginCtrl.login()');
       $scope.errorMessage = null;
       loginService.login(user).then(function (t) {
         if (!t || t == null) {
@@ -42,7 +39,7 @@ angular.module('oregamiClientApp')
         myModal.hide();
         authService.loginConfirmed({}, configUpdater);
       }, function (response) {
-        console.log('Error with status code', response.status);
+        $log.warn('Error with status code', response.status);
         _this.handleLoginError();
       });
     };
@@ -55,7 +52,7 @@ angular.module('oregamiClientApp')
     };
 
     this.handleLoginError = function () {
-      console.log('loginError');
+      $log.warn('loginError');
       $rootScope.loggedIn = false;
       localStorageService.remove('token');
       localStorageService.remove('username');
@@ -74,16 +71,16 @@ angular.module('oregamiClientApp')
     };
 
     $scope.$on('event:auth-loginRequired', function () {
-      console.log('LoginCtrl: event:auth-loginRequired');
+      $log.debug('LoginCtrl: event:auth-loginRequired');
       $scope.errorMessage = null;
       myModal.$promise.then(myModal.show);
     });
     $scope.$on('event:auth-loginConfirmed', function () {
-      console.log('LoginCtrl: event:auth-loginConfirmed');
+      $log.debug('LoginCtrl: event:auth-loginConfirmed');
     });
 
     $scope.$on('event:auth-loginCancelled', function () {
-      console.log('LoginCtrl: event:auth-loginCancelled');
+      $log.debug('LoginCtrl: event:auth-loginCancelled');
     });
 
 

@@ -110,7 +110,7 @@ app.factory('RestFulResponse', function(Restangular) {
   });
 });
 
-app.run(function($rootScope, Restangular, localStorageService) {
+app.run(function($rootScope, Restangular, localStorageService, $log) {
 
     $rootScope.API = "http://test.server.oregami.org";
     //$rootScope.API = "http://localhost:8080";
@@ -123,9 +123,8 @@ app.run(function($rootScope, Restangular, localStorageService) {
   });
 
   Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, params, httpConfig) {
-    //console.log('FRI for ' + url + ': ' + (localStorageService.get("token")==null?null:localStorageService.get("token").token));
     if (localStorageService.get("token") != null) {
-      console.log('auth-header wird gesetzt! \n' + JSON.stringify(localStorageService.get("token")));
+      $log.info('auth-header is set: \n' + JSON.stringify(localStorageService.get("token")));
       headers.authorization = "bearer " + localStorageService.get("token").token;
     }
     return {
@@ -138,9 +137,8 @@ app.run(function($rootScope, Restangular, localStorageService) {
   });
 
   Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, params, httpConfig) {
-    //console.log('FRI for ' + url + ': ' + (localStorageService.get("token")==null?null:localStorageService.get("token").token));
     if (localStorageService.get('token') != null) {
-      console.log('auth-header wird gesetzt! \n' + JSON.stringify(localStorageService.get('token')));
+      $log.info('auth-header is set: \n' + JSON.stringify(localStorageService.get('token')));
       headers.authorization = 'bearer ' + localStorageService.get('token').token;
     }
     return {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .controller('GamingEnvironmentsEditCtrl', function ($scope, $routeParams, gamingEnvironmentsService, Restangular, $location, $translate, $translatePartialLoader, errorService) {
+  .controller('GamingEnvironmentsEditCtrl', function ($scope, $routeParams, gamingEnvironmentsService, Restangular, $location, $translate, $translatePartialLoader, errorService, $log) {
 
     $translatePartialLoader.addPart('gamingEnvironments');
 
@@ -18,7 +18,7 @@ angular.module('oregamiClientApp')
 
 
     this.updateEntity = function (publicationFranchise) {
-      console.log(JSON.stringify(publicationFranchise));
+      $log.debug(JSON.stringify(publicationFranchise));
       gamingEnvironmentsService.updateOne(publicationFranchise).then(function (ret) {
         var url = null;
         if (ret.headers) {

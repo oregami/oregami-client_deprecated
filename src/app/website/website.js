@@ -7,7 +7,6 @@ angular.module('oregamiClientApp')
             $translatePartialLoader.addPart('websites');
 
             $scope.getWebsites = function () {
-                console.log("websiteService.getWebsites()");
                 $websiteService.getWebsites().then(function (d) {
                     $scope.websites = d;
                 });

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .service('gameTitleService', ['Restangular', 'RestFulResponse',
+  .service('gameTitleService', ['Restangular', 'RestFulResponse', '$log',
 
-    function gameTitleService(Restangular, RestFulResponse) {
+    function gameTitleService(Restangular, RestFulResponse, $log) {
 
       var url = 'gameTitle';
 
@@ -14,7 +14,7 @@ angular.module('oregamiClientApp')
         updateOne: function (entity) {
           if (typeof entity.id == 'undefined' || entity.id === null) {
             return RestFulResponse.all(url).post(entity).then(function (response) {
-              console.log('updateOne => ' + JSON.stringify(response));
+              $log.info('updateOne => ' + JSON.stringify(response));
               return response;
             });
           }

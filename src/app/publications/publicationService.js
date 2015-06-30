@@ -12,10 +12,8 @@ angular.module('oregamiClientApp')
           return Restangular.all(url).getList().$object;
         },
         updateOne: function (entity) {
-          console.log('updateOne: id=' + JSON.stringify(entity.id));
           if (typeof entity.id == 'undefined' || entity.id === null) {
             return RestFulResponse.all(url).post(entity).then(function (response) {
-              console.log(JSON.stringify(response.headers));
               return response;
             });
           }

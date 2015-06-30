@@ -11,12 +11,10 @@ angular.module('oregamiClientApp')
   .service('loginService', function loginService(Restangular) {
         return {
             login: function(user) {
-              console.log('loginservice.login()');
                 var params = null;
                 if (user && user!=null) {
                     params = 'username=' + user.username + '&password=' + user.password;
                 }
-                //works also:
                 return Restangular.one('jwt', 'login').customPOST(
                     params,
                     undefined,

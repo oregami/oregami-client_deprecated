@@ -10,18 +10,12 @@ angular.module('oregamiClientApp')
 
         $scope.submit = function () {
             $scope.errordata = null;
-            //console.log('submit: ' + $scope.newuser.password);
-            //console.log($scope.newuser);
             var baseUsers = Restangular.all('user');
             var newAccount = Restangular.copy($scope.newuser);
-            //console.log(newAccount);
-            //console.log(newAccount.password);
             baseUsers.post(newAccount).then(function() {
-                console.log('Registration OK');
                 $scope.newuser = null;
                 $scope.registrationSuccess = true;
             }, function(response){
-                //alert('error2' + JSON.stringify(response));
                 $scope.errordata = response.data;
                 $scope.registrationSuccess = false;
             })

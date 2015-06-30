@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('oregamiClientApp')
-  .service('gamingEnvironmentsService', ['Restangular', 'RestFulResponse',
+  .service('gamingEnvironmentsService', ['Restangular', 'RestFulResponse', '$log',
 
-    function gamingEnvironmentsService(Restangular, RestFulResponse) {
+    function gamingEnvironmentsService(Restangular, RestFulResponse, $log) {
 
       var url = 'gamingEnvironments';
 
@@ -12,7 +12,7 @@ angular.module('oregamiClientApp')
           return Restangular.all(url).getList().$object;
         },
         updateOne: function (entity) {
-          console.log('updateOne: id=' + JSON.stringify(entity.id));
+          $log.debug('updateOne: id=' + JSON.stringify(entity.id));
           if (typeof pf.id == 'undefined' || entity.id === null) {
             return RestFulResponse.all(url).post(entity).then(function (response) {
               console.log(JSON.stringify(response.headers));
